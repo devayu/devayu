@@ -1,131 +1,63 @@
-"use client";
-
+import { Suspense } from "react";
+import NotionGrid from "@/components/NotionGrid";
 import { HeroBackground } from "@/components/HeroBackground";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
-const glitchText = ["V̴̰̈O̸̭̿I̷̱̍D̶̰̾", "ℕ𝕌𝕃𝕃", "∅∅∅∅", "404"];
+async function fetchNotionData() {
+  try {
+    const baseUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.NEXT_PUBLIC_BASE_URL
+        : "http://localhost:3000";
 
-export default function VoidPage() {
-  const [glitchIndex, setGlitchIndex] = useState(0);
-  const [showEasterEgg, setShowEasterEgg] = useState(false);
+    const response = await fetch(`${baseUrl}/api/notion`, {
+      next: { revalidate: 3600 },
+    });
 
-  useEffect(() => {
-    const glitchInterval = setInterval(() => {
-      setGlitchIndex((prev) => (prev + 1) % glitchText.length);
-    }, 1500);
-
-    return () => {
-      clearInterval(glitchInterval);
-    };
-  }, []);
-
-  const handleKonamiCode = (e: React.KeyboardEvent) => {
-    if (e.key.toLowerCase() === "v") {
-      setShowEasterEgg(!showEasterEgg);
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
     }
-  };
+
+    const result = await response.json();
+    return result.data || [];
+  } catch (error) {
+    console.error("Error fetching Notion data:", error);
+    return [];
+  }
+}
+
+async function NotionContent() {
+  const notionData = await fetchNotionData();
 
   return (
-    <div
-      className="relative min-h-screen bg-black/95 overflow-hidden"
-      onKeyDown={handleKonamiCode}
-      tabIndex={0}
-    >
+    <NotionGrid
+      data={notionData}
+      columns={3}
+      showImages={true}
+      showDates={true}
+    />
+  );
+}
+
+export default function FragmentsPage() {
+  return (
+    <div className="relative min-h-screen">
       <HeroBackground />
-
-      {/* Glitch overlay */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 text-green-500 font-mono text-xs animate-pulse">
-          {">"} systems_online: true
-        </div>
-        <div className="absolute top-20 right-20 text-red-500 font-mono text-xs animate-bounce">
-          ERROR 418: I&apos;m a teapot
-        </div>
-        <div className="absolute bottom-20 left-20 text-blue-500 font-mono text-xs">
-          matrix.exe has stopped working
-        </div>
-      </div>
-
-      <main className="relative px-6 md:px-12 lg:px-24 py-16 flex items-center justify-center min-h-screen">
-        <div className="text-center max-w-4xl">
-          {/* Cryptic Symbol */}
-          <div className="mb-8">
-            <div className="text-9xl md:text-[12rem] font-mono text-primary/80 animate-pulse select-none">
-              {glitchText[glitchIndex]}
-            </div>
-          </div>
-
-          {/* Hidden wisdom */}
-          <div className="space-y-6 mb-12">
-            <p className="text-muted-foreground/70 font-hanken-grotesk text-sm">
-              Congratulations, curious soul. You&apos;ve discovered the void.
-            </p>
-            <p className="text-muted-foreground/50 font-hanken-grotesk text-xs">
-              This is where I put my random thoughts, existential developer
-              crises, and things that don&apos;t fit anywhere else.
-            </p>
-
-            {showEasterEgg && (
-              <div className="animate-fade-in mt-8 p-4 border border-primary/20 rounded-lg bg-primary/5 backdrop-blur-sm">
-                <p className="text-primary text-sm font-mono">
-                  🎉 You found the easter egg! Press &apos;v&apos; to toggle
-                  this message.
-                </p>
-                <p className="text-muted-foreground text-xs mt-2">
-                  &quot;The best way to debug is to explain your code to a
-                  rubber duck. If you don&apos;t have one, a cat works too. They
-                  judge you silently.&quot;
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* Navigation */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/">
-              <Button
-                variant="outline"
-                className="group overflow-hidden h-12 px-6 rounded-full border-white/20 hover:border-transparent bg-black/40 hover:bg-black/50 text-foreground/90 backdrop-blur-sm font-hanken-grotesk"
-              >
-                <span className="relative z-10">← Return to Reality</span>
-              </Button>
-            </Link>
-
-            <button
-              onClick={() => setShowEasterEgg(!showEasterEgg)}
-              className="text-muted-foreground/30 hover:text-primary/60 transition-colors text-sm font-mono"
-            >
-              Press &apos;v&apos; for void secrets
-            </button>
-          </div>
-
-          {/* Matrix-style footer */}
-          <div className="mt-16 text-center">
-            <div className="text-xs font-mono text-muted-foreground/30 space-y-1">
-              <div>The void stares back</div>
-              <div className="animate-pulse">∅ null ∅ undefined ∅ 404 ∅</div>
-            </div>
-          </div>
+      <main className="relative px-6 md:px-12 lg:px-24 py-16">
+        <Navbar />
+        <div className="mt-5 md:mt-10">
+          <h1 className="text-xl font-bold tracking-tight text-primary font-space-grotesk">
+            Fragments
+          </h1>
+          <p className="font-garamond text-muted-foreground italic font-semibold">
+            Little pieces of thoughts, quotes, and images I&apos;ve collected.
+          </p>
+          <Suspense fallback={<LoadingSpinner />}>
+            <NotionContent />
+          </Suspense>
         </div>
       </main>
-
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.5s ease-in-out;
-        }
-      `}</style>
     </div>
   );
 }

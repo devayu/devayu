@@ -25,14 +25,14 @@ const Footer = () => {
           >
             Source
           </Link>
-          {/* <Link
+          <Link
             href="/∅"
             className="text-muted-foreground/20 hover:text-primary/60 transition-all duration-700 hover:scale-125 cursor-pointer select-none font-mono"
           >
             <span className="text-lg opacity-30 hover:opacity-80 transition-all duration-500 hover:rotate-180 inline-block">
               ⟐⧚∅
             </span>
-          </Link> */}
+          </Link>
         </div>
       </div>
     </footer>

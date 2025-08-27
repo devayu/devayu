@@ -1,6 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { File, Github, Linkedin, Twitter } from "lucide-react";
-import Link from "next/link";
 import {
   Sheet,
   SheetContent,
@@ -8,12 +6,16 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Github, Linkedin, Twitter } from "lucide-react";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
     <header className="flex items-center justify-between font-hanken-grotesk">
       <div className="text-lg font-semibold tracking-tight font-space-grotesk">
-        devayu<span className="text-primary">.</span>
+        <Link href="/">
+          devayu<span className="text-primary">.</span>
+        </Link>
       </div>
 
       {/* Desktop nav keeps existing styling */}

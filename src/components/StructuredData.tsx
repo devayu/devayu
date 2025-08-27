@@ -1,6 +1,4 @@
 import { siteConfig } from "@/lib/seo";
-import { projects } from "@/data/projects";
-import { workExperience } from "@/data/work";
 
 export function StructuredData() {
   const personSchema = {

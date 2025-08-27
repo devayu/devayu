@@ -4,7 +4,6 @@ import { WorkExperience } from "@/types";
 const WorkCard = ({
   title,
   description,
-  time,
   yearString,
   location,
 }: WorkExperience) => {
