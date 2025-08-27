@@ -45,15 +45,6 @@ const Navbar = () => {
             <Twitter className="w-4 h-4" /> X
           </Button>
         </Link>
-        <Link
-          href="https://drive.google.com/file/d/1y329yo76Ns09W9BTz951ax5GT2shXNUl/view"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button size="sm" variant="outline">
-            <File className="w-4 h-4" /> CV
-          </Button>
-        </Link>
       </div>
 
       {/* Mobile menu uses same button styles inside a sheet */}
@@ -118,26 +109,6 @@ const Navbar = () => {
                   className="w-full justify-start"
                 >
                   <Twitter className="w-4 h-4" /> X
-                </Button>
-              </Link>
-              <Link
-                href="https://drive.google.com/file/d/1y329yo76Ns09W9BTz951ax5GT2shXNUl/view"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="w-full justify-start hidden"
-                >
-                  <File className="w-4 h-4" /> CV
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="w-full justify-start"
-                >
-                  <File className="w-4 h-4" /> CV
                 </Button>
               </Link>
             </div>
