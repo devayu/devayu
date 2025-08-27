@@ -1,11 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { gsap } from "gsap";
 import { Eye, Github } from "lucide-react";
 import Link from "next/link";
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
 
 type ProjectCardProps = {
   title: string;

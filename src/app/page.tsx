@@ -1,12 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { HeroBackground } from "@/components/HeroBackground";
-import { ProjectCard } from "@/components/ProjectCard";
 import Navbar from "@/components/Navbar";
-import Link from "next/link";
 import ProjectSection from "@/components/ProjectSection";
-import { personalInfo, workExperience } from "@/data";
+import { Button } from "@/components/ui/button";
 import WorkSection from "@/components/WorkSection";
+import Link from "next/link";
 export default function Home() {
   return (
     <div className="relative min-h-screen">

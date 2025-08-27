@@ -1,6 +1,4 @@
 import ProjectCard from "@/components/ProjectCard";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { getFeaturedProjects } from "@/data";
 
 const ProjectSection = () => {
