@@ -37,7 +37,7 @@ const Navbar = () => {
           </Button>
         </Link>
         <Link
-          href="https://x.com/devayu_"
+          href="https://x.com/idntkno_w"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -108,7 +108,7 @@ const Navbar = () => {
                 </Button>
               </Link>
               <Link
-                href="https://x.com/devayu_"
+                href="https://x.com/idntkno_w"
                 target="_blank"
                 rel="noopener noreferrer"
               >

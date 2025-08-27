@@ -18,7 +18,7 @@ export const WorkSection = () => {
       <h3 className="text-sm text-primary font-hanken-grotesk">
         A few places I’ve contributed my skills
       </h3>
-      <div className="space-y-3 mt-5">
+      <div className="space-y-3">
         {workExperience.map((work) => {
           return <WorkCard {...work} key={work.id}></WorkCard>;
         })}

@@ -12,7 +12,7 @@ export const workExperience: WorkExperience[] = [
       </div>`,
       `<div class="flex items-start gap-2">
         <span class="text-primary font-bold">•</span>
-        <span>Architected and develop multiple react modules to enhance patient conditions review, generating an estimated <span class="text-primary font-extrabold font-garamond italic">$10M revenue impact</span>.</span>
+        <span>Architected and developd multiple react modules to enhance patient conditions review, generating an estimated <span class="text-primary font-extrabold font-garamond italic">$10M revenue impact</span>.</span>
       </div>`,
     ],
     yearString: "Oct 2022 - Present",

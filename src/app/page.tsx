@@ -42,7 +42,7 @@ export default function Home() {
               {`I’m a full stack developer who loves building end-to-end solutions with React and Spring Boot. Right now, I’m working on `}
               <span>
                 <Link
-                  href="abc"
+                  href="https://github.com/devayu/beacon.git"
                   className="text-primary"
                   target="_blank"
                   rel="noopener noreferrer"
