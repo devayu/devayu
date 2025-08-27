@@ -75,9 +75,9 @@ export default function VoidPage() {
                   this message.
                 </p>
                 <p className="text-muted-foreground text-xs mt-2">
-                  "The best way to debug is to explain your code to a rubber
-                  duck. If you don&apos;t have one, a cat works too. They judge
-                  you silently."
+                  &quot;The best way to debug is to explain your code to a
+                  rubber duck. If you don&apos;t have one, a cat works too. They
+                  judge you silently.&quot;
                 </p>
               </div>
             )}
