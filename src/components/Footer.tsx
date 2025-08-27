@@ -18,7 +18,7 @@ const Footer = () => {
             Contact
           </Link>
           <Link
-            href="https://github.com/devayu"
+            href="https://github.com/devayu/devayu"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
