@@ -9,7 +9,7 @@ const WorkCard = ({
   location,
 }: WorkExperience) => {
   return (
-    <Card className="bg-background/40 backdrop-blur-md shadow-lg hover:shadow-primary/10transition-all duration-300 hover:bg-background/50 border-0 font-hanken-grotesk border-b-2 border-dashed rounded-none">
+    <Card className="bg-background/40 backdrop-blur-md shadow-lg border-0 font-hanken-grotesk border-b-2 border-dashed rounded-none">
       <CardContent className="p-4 flex items-center justify-between">
         <div>
           <div className="flex gap- flex-col mb-2">

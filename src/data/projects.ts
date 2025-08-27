@@ -24,6 +24,17 @@ export const projects: Project[] = [
     year: "2024",
     status: "completed",
   },
+  {
+    id: "kickstore",
+    title: "The Kicks Store",
+    description: "A super minimal sneakers e-store.",
+    techStack: ["Next.js", "Stripe", "Firebase"],
+    githubLink: "https://github.com/devayu/thekickstore",
+    liveLink: "https://thekickstore.vercel.app",
+    featured: true,
+    year: "2022",
+    status: "completed",
+  },
 ];
 
 // Helper functions

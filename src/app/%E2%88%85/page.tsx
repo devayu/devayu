@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 const glitchText = ["V̴̰̈O̸̭̿I̷̱̍D̶̰̾", "ℕ𝕌𝕃𝕃", "∅∅∅∅", "404"];
 
 export default function VoidPage() {
-  const [currentQuote, setCurrentQuote] = useState(0);
   const [glitchIndex, setGlitchIndex] = useState(0);
   const [showEasterEgg, setShowEasterEgg] = useState(false);
 
