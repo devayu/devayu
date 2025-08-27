@@ -42,7 +42,7 @@ export default function VoidPage() {
           {">"} systems_online: true
         </div>
         <div className="absolute top-20 right-20 text-red-500 font-mono text-xs animate-bounce">
-          ERROR 418: I'm a teapot
+          ERROR 418: I&apos;m a teapot
         </div>
         <div className="absolute bottom-20 left-20 text-blue-500 font-mono text-xs">
           matrix.exe has stopped working
@@ -61,22 +61,23 @@ export default function VoidPage() {
           {/* Hidden wisdom */}
           <div className="space-y-6 mb-12">
             <p className="text-muted-foreground/70 font-hanken-grotesk text-sm">
-              Congratulations, curious soul. You've discovered the void.
+              Congratulations, curious soul. You&apos;ve discovered the void.
             </p>
             <p className="text-muted-foreground/50 font-hanken-grotesk text-xs">
               This is where I put my random thoughts, existential developer
-              crises, and things that don't fit anywhere else.
+              crises, and things that don&apos;t fit anywhere else.
             </p>
 
             {showEasterEgg && (
               <div className="animate-fade-in mt-8 p-4 border border-primary/20 rounded-lg bg-primary/5 backdrop-blur-sm">
                 <p className="text-primary text-sm font-mono">
-                  🎉 You found the easter egg! Press 'v' to toggle this message.
+                  🎉 You found the easter egg! Press &apos;v&apos; to toggle
+                  this message.
                 </p>
                 <p className="text-muted-foreground text-xs mt-2">
                   "The best way to debug is to explain your code to a rubber
-                  duck. If you don't have one, a cat works too. They judge you
-                  silently."
+                  duck. If you don&apos;t have one, a cat works too. They judge
+                  you silently."
                 </p>
               </div>
             )}
@@ -97,7 +98,7 @@ export default function VoidPage() {
               onClick={() => setShowEasterEgg(!showEasterEgg)}
               className="text-muted-foreground/30 hover:text-primary/60 transition-colors text-sm font-mono"
             >
-              Press 'v' for void secrets
+              Press &apos;v&apos; for void secrets
             </button>
           </div>
 

@@ -3,7 +3,7 @@ import { defaultMetadata } from "@/lib/seo";
 import type { Metadata, Viewport } from "next";
 import { EB_Garamond, Hanken_Grotesk, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
+import ConditionalFooter from "@/components/ConditionalFooter";
 
 const garamond = EB_Garamond({
   variable: "--font-garamond",
@@ -74,7 +74,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {children}
-        <Footer></Footer>
+        <ConditionalFooter />
       </body>
     </html>
   );
