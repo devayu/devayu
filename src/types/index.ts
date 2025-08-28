@@ -40,7 +40,9 @@ export interface NotionRichText {
 
 export interface NotionFile {
   name: string;
-  url: string;
+  file: {
+    url: string;
+  };
   type: "file" | "external";
   expiry_time?: string | null;
 }
@@ -102,7 +104,16 @@ export interface TransformedNotionItem {
   url: string;
   cover?: NotionCover;
   icon?: NotionIcon;
-  [key: string]: string | number | boolean | string[] | NotionFile[] | NotionCover | NotionIcon | null | undefined;
+  [key: string]:
+    | string
+    | number
+    | boolean
+    | string[]
+    | NotionFile[]
+    | NotionCover
+    | NotionIcon
+    | null
+    | undefined;
 }
 
 export interface NotionAPIResponse {

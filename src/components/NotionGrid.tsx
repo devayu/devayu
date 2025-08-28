@@ -104,10 +104,10 @@ const NotionGrid = ({
         if (
           typeof firstFile === "object" &&
           firstFile &&
-          "url" in firstFile &&
-          typeof firstFile.url === "string"
+          "url" in firstFile.file &&
+          typeof firstFile.file.url === "string"
         ) {
-          return firstFile.url;
+          return firstFile.file.url;
         }
         if (typeof firstFile === "string" && firstFile.startsWith("http")) {
           return firstFile;
