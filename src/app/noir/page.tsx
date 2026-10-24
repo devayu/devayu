@@ -21,10 +21,15 @@ const Caption = ({ children, className }: { children: React.ReactNode; className
   </p>
 );
 
+// Each chapter opens on its own splash page, like the graphic novel.
 const Chapter = ({ n, title }: { n: string; title: string }) => (
-  <Reveal className="noir-panel mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 pb-10 pt-32 text-center md:pt-48">
-    <span className="font-typewriter text-sm text-[#e9dfa5]/70">Chapter {n}</span>
-    <h2 className="font-oswald text-[clamp(2.8rem,9vw,7rem)] font-bold uppercase leading-[0.9] tracking-[0.04em]">{title}</h2>
+  <Reveal className="noir-splash relative mx-auto flex min-h-[88svh] max-w-[1400px] flex-col justify-center overflow-hidden px-4 md:px-8">
+    <span aria-hidden className="noir-splash-panel absolute inset-x-6 inset-y-[12%] border-2 border-[#d8d2c0]/25 md:inset-x-16" />
+    <h2 className="relative font-oswald text-[clamp(4rem,17vw,15rem)] font-bold uppercase leading-[0.8] tracking-[-0.01em]">
+      {title}
+    </h2>
+    <span aria-hidden className="noir-splash-slash relative mt-8 block h-[3px] w-2/3 bg-[#a3121e]" />
+    <span className="relative mt-4 font-typewriter text-base text-[#e9dfa5] md:text-lg">Chapter {n}</span>
   </Reveal>
 );
 

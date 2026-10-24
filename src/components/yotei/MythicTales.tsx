@@ -33,10 +33,12 @@ export default function MythicTales() {
   return (
     <section aria-labelledby="tales-heading" className="px-6 py-28 md:px-12 lg:px-24">
       <div className="mx-auto max-w-6xl">
-        <p lang="ja" aria-hidden className="font-mincho text-lg text-gold">伝説</p>
-        <h2 id="tales-heading" className="mt-2 font-mincho text-5xl font-extrabold md:text-7xl">
-          Mythic tales
-        </h2>
+        <div className="relative">
+          <span lang="ja" aria-hidden className="yo-backdrop-kanji -top-24 right-0 md:-top-40">伝説</span>
+          <h2 id="tales-heading" className="relative font-mincho text-[clamp(3.2rem,9vw,7.5rem)] font-extrabold leading-none">
+            Mythic tales
+          </h2>
+        </div>
         <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-soft">
           On Tsushima, wandering musicians sing about legends. Pull up a mat,
           and I&apos;ll sing you mine. Every one of them is true.

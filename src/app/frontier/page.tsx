@@ -102,7 +102,7 @@ const Engraving = ({ id }: { id: string }) => {
 };
 
 const SectionTitle = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <h2 className={cn("font-rye text-4xl leading-tight md:text-6xl", className)}>{children}</h2>
+  <h2 className={cn("font-rye text-[clamp(2.6rem,8vw,6.5rem)] leading-[0.95]", className)}>{children}</h2>
 );
 
 export default function FrontierPage() {
@@ -129,10 +129,10 @@ export default function FrontierPage() {
           <WorldSwitch className="font-fell text-base hover:text-white" />
         </header>
         <div className="fr-chapter absolute inset-x-0 top-[22%] z-10 text-center text-[#fbe3a6]">
-          <p className="font-fell text-xl italic tracking-[0.3em] md:text-2xl">Chapter I</p>
-          <p className="mt-2 font-rye text-[clamp(3rem,10vw,8rem)] leading-none drop-shadow-[0_4px_0_rgb(42_19_12/0.6)]">
+          <p className="font-rye text-[clamp(3rem,10vw,8rem)] leading-none drop-shadow-[0_4px_0_rgb(42_19_12/0.6)]">
             Howdy, Stranger
           </p>
+          <p className="mt-3 font-fell text-xl italic tracking-[0.3em] md:text-2xl">Chapter I</p>
         </div>
         <p className="absolute inset-x-0 bottom-[calc(9vh+14px)] z-10 text-center font-fell italic text-[#f6d189]/80">
           Ride on down. Press E if you&apos;re feeling quick on the draw.
@@ -140,7 +140,7 @@ export default function FrontierPage() {
       </section>
 
       {/* The wanted poster and a journal entry */}
-      <section className="fr-wood relative px-5 py-20 md:py-28">
+      <section className="fr-wood fr-torn-top relative px-5 py-20 md:py-28">
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[minmax(0,420px)_1fr]">
           <Reveal className="fr-pin relative mx-auto w-full max-w-[420px]" style={{ ["--tilt" as string]: "-2deg" }}>
             <div className="fr-paper fr-torn px-7 pb-8 pt-9 text-center shadow-[0_20px_40px_rgb(0_0_0/0.5)]">
@@ -196,11 +196,10 @@ export default function FrontierPage() {
       </section>
 
       {/* The catalogue: projects */}
-      <section className="fr-paper px-5 py-20 md:py-28">
+      <section className="fr-paper fr-torn-top px-5 py-20 md:py-28">
         <div className="mx-auto max-w-6xl">
           <div className="border-y-4 border-double border-[#2b1a10] py-6 text-center">
-            <p className="font-fell text-lg italic">The</p>
-            <SectionTitle className="md:text-7xl">Maurya &amp; Co. Catalogue</SectionTitle>
+            <SectionTitle>The Maurya &amp; Co. Catalogue</SectionTitle>
             <p className="mt-2 font-fell text-lg italic">Fine software, built to last. Established 2022.</p>
           </div>
           <p className="mx-auto mt-8 max-w-xl text-center text-lg italic">
@@ -247,10 +246,10 @@ export default function FrontierPage() {
       </section>
 
       {/* The trail: work, as stations on a rail line */}
-      <section className="bg-[#2b1a10] px-5 py-20 text-[#e8d7b2] md:py-28">
+      <section className="fr-torn-top bg-[#2b1a10] px-5 py-20 text-[#e8d7b2] md:py-28">
         <div className="mx-auto max-w-6xl">
-          <p className="font-fell text-xl italic text-[#f6d189]/80">Chapter II</p>
           <SectionTitle className="text-[#f6d189]">Stops along the trail</SectionTitle>
+          <p className="mt-1 font-fell text-xl italic text-[#f6d189]/80">Chapter II</p>
           <p className="mt-2 max-w-xl text-lg italic text-[#e8d7b2]/80">Where I&apos;ve hung my hat, most recent first.</p>
           <div aria-hidden className="relative mt-10 h-6">
             <div className="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 bg-[repeating-linear-gradient(90deg,#8a6a3c_0_6px,transparent_6px_18px)]" />
@@ -282,7 +281,7 @@ export default function FrontierPage() {
       </section>
 
       {/* Telegraph office */}
-      <section className="fr-wood px-5 py-20 md:py-28">
+      <section className="fr-wood fr-torn-top px-5 py-20 md:py-28">
         <Reveal className="fr-pin fr-paper mx-auto max-w-2xl p-7 shadow-[0_20px_40px_rgb(0_0_0/0.5)] md:p-10" style={{ ["--tilt" as string]: "-0.8deg" }}>
           <div className="flex items-baseline justify-between border-b-4 border-double border-[#2b1a10] pb-3">
             <p className="font-rye text-2xl md:text-3xl">Telegram</p>

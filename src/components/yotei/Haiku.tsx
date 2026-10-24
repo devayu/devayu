@@ -25,9 +25,12 @@ export default function Haiku() {
     <section aria-labelledby="haiku-heading" className="px-6 py-28 md:px-12 lg:px-24">
       <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-[1.3fr_1fr] md:gap-20">
         <div>
-          <h2 id="haiku-heading" className="font-mincho text-5xl font-extrabold md:text-7xl">
-            Write me a haiku
-          </h2>
+          <div className="relative">
+            <span lang="ja" aria-hidden className="yo-backdrop-kanji -left-4 -top-20 md:-top-36">句</span>
+            <h2 id="haiku-heading" className="relative font-mincho text-[clamp(3rem,8vw,6.5rem)] font-extrabold leading-[0.95]">
+              Write me a haiku
+            </h2>
+          </div>
           <p className="mt-4 max-w-md text-lg text-ink-soft">
             Before you go, pick a line for each part. I&apos;ll get it in my inbox
             if you send it, and I read every one.

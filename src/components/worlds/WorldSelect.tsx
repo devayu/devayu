@@ -1,6 +1,10 @@
 "use client";
 
+import YoteiScene from "@/components/yotei/YoteiScene";
 import { worldArt } from "@/components/worlds/art";
+import { FrontierHero, NoirHero } from "@/components/worlds/heroes";
+import HoloKoi from "@/components/worlds/nightcity/HoloKoi";
+import NightCityCity from "@/components/worlds/nightcity/NightCityCity";
 import { worlds, type WorldSlug } from "@/data/worlds";
 import { audio } from "@/lib/audio/manager";
 import { portalStore } from "@/lib/portal/store";
@@ -17,18 +21,41 @@ const readStarted = () => {
   }
 };
 
-const titleStyle: Record<WorldSlug, string> = {
-  noir: "font-oswald font-bold uppercase tracking-[0.18em] text-[#e9dfa5]",
+// Each world's name is set in that world's own lettering.
+const nameStyle: Record<WorldSlug, string> = {
+  noir: "font-oswald font-bold uppercase tracking-[0.12em] text-[#e9dfa5]",
   frontier: "font-rye text-[#f6d189]",
-  "night-city": "font-rajdhani font-bold uppercase italic tracking-wider text-[#fcee0a] nc-glitch",
-  yotei: "font-mincho font-extrabold text-[#1b2129]",
+  "night-city": "font-rajdhani font-bold uppercase italic tracking-wide text-[#fcee0a]",
+  yotei: "font-mincho font-extrabold text-[#f3ece0]",
 };
 
 const accent: Record<WorldSlug, string> = {
   noir: "#e9dfa5",
-  frontier: "#e7a456",
+  frontier: "#f6d189",
   "night-city": "#fcee0a",
   yotei: "#c8283a",
+};
+
+// The real, living hero of every world becomes the menu's backdrop.
+const Backdrop = ({ slug, active }: { slug: WorldSlug; active: boolean }) => {
+  if (slug === "noir") return <NoirHero />;
+  if (slug === "frontier") return <FrontierHero />;
+  if (slug === "night-city")
+    return (
+      <>
+        {/* the 3D city only renders while it's the one on screen */}
+        <NightCityCity running={active} />
+        <HoloKoi className="absolute inset-0 h-full w-full" />
+      </>
+    );
+  return (
+    <div
+      className="absolute inset-0"
+      style={{ background: "linear-gradient(to bottom, var(--sky-top), var(--sky-mid) 45%, var(--sky-bottom) 75%)" }}
+    >
+      <YoteiScene />
+    </div>
+  );
 };
 
 export default function WorldSelect() {
@@ -71,9 +98,9 @@ export default function WorldSelect() {
   const launch = useCallback(
     (i: number) => {
       if (launching !== null) return;
-      // The portal tears open from the chosen card.
-      const card = document.querySelectorAll<HTMLElement>("[role=option]")[i];
-      const rect = card?.getBoundingClientRect();
+      // The portal tears open from the chosen world's name.
+      const item = document.querySelectorAll<HTMLElement>("[data-world-item]")[i];
+      const rect = item?.getBoundingClientRect();
       const origin: [number, number] = rect
         ? [(rect.left + rect.width / 2) / window.innerWidth, (rect.top + rect.height / 2) / window.innerHeight]
         : [0.5, 0.5];
@@ -84,17 +111,23 @@ export default function WorldSelect() {
     [launching]
   );
 
+  const highlight = (i: number) => {
+    if (launching !== null) return;
+    setActive(i);
+    setPreviewing(true);
+  };
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!started) {
         if (e.key !== "Tab" && !e.metaKey) start();
         return;
       }
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
         e.preventDefault();
         setPreviewing(true);
         setActive((a) => (a + 1) % worlds.length);
-      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
         e.preventDefault();
         setPreviewing(true);
         setActive((a) => (a - 1 + worlds.length) % worlds.length);
@@ -106,147 +139,93 @@ export default function WorldSelect() {
     return () => window.removeEventListener("keydown", onKey);
   }, [active, launch, started, start]);
 
-  const current = worlds[active];
-  const BackdropArt = worldArt[current.slug];
-
   if (!started) return <TitleScreen onStart={start} />;
 
+  const current = worlds[active];
+
   return (
-    <main className="relative flex min-h-[100svh] flex-col overflow-hidden bg-black px-4 pb-6 pt-6 font-oswald text-[#ece8df] md:px-10 md:pt-8">
-      {/* blurred backdrop of the highlighted world */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <BackdropArt
-          key={current.slug}
-          className="h-full w-full scale-110 opacity-35 blur-2xl transition-opacity duration-700 animate-in fade-in"
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#000_85%)]" />
+    <main className="menu relative min-h-[100svh] overflow-hidden bg-black text-[#ece8df]" data-active={current.slug}>
+      <h1 className="sr-only">Ayush Maurya, full stack developer</h1>
+
+      {/* every world, alive behind the menu; the highlighted one is in front */}
+      <div aria-hidden className="absolute inset-0">
+        {worlds.map((w, i) => (
+          <div key={w.slug} className={cn("menu-world absolute inset-0", i === active && "is-active")}>
+            <Backdrop slug={w.slug} active={i === active} />
+          </div>
+        ))}
+        <div className="menu-shade absolute inset-0" />
       </div>
 
-      <header className="relative z-10 flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
-        <div>
-          <h1 className="sr-only">Ayush Maurya, full stack developer</h1>
-          <p className="text-4xl font-bold leading-none md:text-6xl" style={{ color: accent[current.slug] }}>
-            Choose your world
-          </p>
-          <p className="mt-3 max-w-lg font-sans text-[15px] leading-relaxed text-[#ece8df]/75">
-            Hey, glad you&apos;re here. Games are a big part of who I am, so
-            instead of a plain page, pick one of the worlds I love and I&apos;ll
+      <div className="relative z-10 flex min-h-[100svh] flex-col px-5 py-6 md:px-12 md:py-9">
+        <header className="max-w-sm">
+          <p className="font-oswald text-2xl font-bold md:text-3xl">Choose your world</p>
+          <p className="mt-2 font-sans text-sm leading-relaxed text-[#ece8df]/70">
+            Games are a big part of who I am. Pick a world I love, and I&apos;ll
             tell you about myself in it.
           </p>
-        </div>
-      </header>
+        </header>
 
-      <ul
-        role="listbox"
-        aria-label="Worlds"
-        onMouseLeave={() => setPreviewing(false)}
-        className="relative z-10 mt-6 flex min-h-0 flex-1 flex-col gap-2 md:mt-8 md:flex-row md:gap-3"
-      >
-        {worlds.map((world, i) => {
-          const Art = worldArt[world.slug];
-          const isActive = i === active;
-          const isLaunching = launching === i;
-          return (
-            <li
-              key={world.slug}
-              role="option"
-              aria-selected={isActive}
-              onPointerMove={(e) => {
-                // Tilt toward the cursor, like holding a character card.
-                const r = e.currentTarget.getBoundingClientRect();
-                e.currentTarget.style.setProperty("--rx", (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3));
-                e.currentTarget.style.setProperty("--ry", (((e.clientY - r.top) / r.height) * 2 - 1).toFixed(3));
-              }}
-              onPointerLeave={(e) => {
-                e.currentTarget.style.setProperty("--rx", "0");
-                e.currentTarget.style.setProperty("--ry", "0");
-              }}
-              className={cn(
-                "world-card relative min-h-[64px] overflow-hidden rounded-md transition-[flex-grow,opacity,filter] duration-500 ease-[cubic-bezier(0.34,1.4,0.64,1)]",
-                isActive ? "flex-[3.2]" : "flex-1",
-                launching !== null && !isLaunching && "opacity-40",
-                isLaunching && "flex-[4]"
-              )}
-            >
-              <button
-                type="button"
-                onMouseEnter={() => {
-                  if (launching !== null) return;
-                  setActive(i);
-                  setPreviewing(true);
-                }}
-                onFocus={() => {
-                  setActive(i);
-                  setPreviewing(true);
-                }}
-                onClick={() => launch(i)}
-                className="group absolute inset-0 text-left focus-visible:outline-none"
-                aria-label={`Enter ${world.name}, inspired by ${world.inspiredBy}`}
-              >
-                <Art
-                  className={cn(
-                    "card-art absolute inset-0 h-full w-full transition-[filter] duration-700",
-                    isActive ? "scale-100 grayscale-0" : "scale-105 brightness-50 grayscale"
-                  )}
-                />
-                <span
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"
-                />
-                {/* light catching the card's surface */}
-                <span aria-hidden className="card-sheen absolute inset-0" />
-                {/* selection frame */}
-                <span
-                  aria-hidden
-                  className={cn(
-                    "absolute inset-0 rounded-md border-2 transition-opacity duration-300",
-                    isActive ? "opacity-100" : "opacity-0 group-focus-visible:opacity-100"
-                  )}
-                  style={{ borderColor: accent[world.slug] }}
-                />
-                <span className="card-title absolute inset-x-0 bottom-0 flex flex-col gap-1 p-4 md:p-6">
-                  <span
-                    className={cn(
-                      "leading-none transition-[font-size] duration-500",
-                      titleStyle[world.slug],
-                      world.slug === "yotei" && !isActive && "text-[#ece8df]",
-                      isActive ? "text-4xl md:text-6xl" : "text-2xl md:text-3xl"
-                    )}
-                    data-text={world.name}
+        {/* the menu: huge names, each in its world's lettering */}
+        <nav aria-label="Worlds" className="mt-auto md:my-auto">
+          <ul className="flex flex-col gap-1 md:gap-2">
+            {worlds.map((w, i) => {
+              const isActive = i === active;
+              return (
+                <li key={w.slug}>
+                  <button
+                    type="button"
+                    data-world-item
+                    aria-current={isActive}
+                    aria-label={`Enter ${w.name}, inspired by ${w.inspiredBy}`}
+                    onMouseEnter={() => highlight(i)}
+                    onFocus={() => highlight(i)}
+                    onClick={() => {
+                      // On touch, the first tap highlights and previews; the second enters.
+                      const coarse = window.matchMedia("(pointer: coarse)").matches;
+                      if (coarse && !isActive) highlight(i);
+                      else launch(i);
+                    }}
+                    className={cn("menu-item flex w-full items-center gap-5 text-left focus-visible:outline-none", isActive && "is-active")}
                   >
-                    {world.name}
-                  </span>
-                  <span
-                    className={cn(
-                      "overflow-hidden font-sans text-sm text-[#ece8df]/80 transition-[max-height,opacity] duration-500",
-                      isActive ? "max-h-24 opacity-100" : "max-h-0 opacity-0"
-                    )}
-                  >
-                    {world.tagline}
-                    <span className="mt-1 block text-xs text-[#ece8df]/55">
-                      Inspired by {world.inspiredBy}
+                    <span
+                      className={cn("menu-name leading-[0.92]", nameStyle[w.slug], isActive && w.slug === "night-city" && "nc-glitch")}
+                    >
+                      {w.name}
                     </span>
-                  </span>
-                </span>
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+                    <span aria-hidden className="menu-rule hidden h-px flex-1 md:block" style={{ background: accent[w.slug] }} />
+                  </button>
+                  {isActive && (
+                    <div className="menu-info mt-3 max-w-md pb-2">
+                      <p className={cn("text-xl leading-tight md:text-2xl", nameStyle[w.slug])}>{w.tagline}</p>
+                      <p className="mt-1 font-sans text-sm text-[#ece8df]/65">Inspired by {w.inspiredBy}</p>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
-      <footer className="relative z-10 mt-5 hidden items-center justify-between pl-44 text-sm tracking-wider text-[#ece8df]/60 md:flex">
-        <span className="flex items-center gap-5">
-          <span className="flex items-center gap-2 whitespace-nowrap">
-            <kbd className="sel-key">←</kbd>
-            <kbd className="sel-key">→</kbd> Choose
-          </span>
-          <span className="flex items-center gap-2">
-            <kbd className="sel-key">Enter</kbd> Start
-          </span>
-          <span className="hidden whitespace-nowrap lg:inline">Hover a world to hear its theme</span>
-        </span>
-        <span className="hidden text-right lg:inline">It&apos;s the same me in every world. Only the scenery changes.</span>
-      </footer>
+        {/* enter, kept clear of the sound dock on the left */}
+        <div className="mt-6 flex justify-end pb-16 md:mt-0 md:pb-0">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-oswald text-sm tracking-wider text-[#ece8df]/70">
+            <span className="hidden items-center gap-2 md:flex">
+              <kbd className="sel-key">↑</kbd>
+              <kbd className="sel-key">↓</kbd> Choose
+            </span>
+            <button
+              type="button"
+              onClick={() => launch(active)}
+              className="menu-enter flex items-center gap-3 px-5 py-3 text-base font-bold uppercase tracking-[0.2em]"
+              style={{ ["--accent" as string]: accent[current.slug] }}
+            >
+              <kbd className="sel-key hidden md:inline-grid">Enter</kbd>
+              Enter {current.name}
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

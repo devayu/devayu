@@ -62,9 +62,12 @@ export default function Sash() {
   return (
     <section aria-labelledby="sash-heading" className="relative px-6 py-28 md:px-12 lg:px-24">
       <div className="mx-auto max-w-6xl">
-        <h2 id="sash-heading" className="font-mincho text-5xl font-extrabold md:text-7xl">
-          The six
-        </h2>
+        <div className="relative">
+          <span lang="ja" aria-hidden className="yo-backdrop-kanji -top-16 right-0 md:-top-32">六</span>
+          <h2 id="sash-heading" className="relative font-mincho text-[clamp(3.2rem,9vw,7.5rem)] font-extrabold leading-none">
+            The six
+          </h2>
+        </div>
         <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-soft">
           Atsu painted six names on her sash. I did the same with the things I
           set out to build. The ones I&apos;ve finished get cut. Tap a name and

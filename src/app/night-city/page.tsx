@@ -1,7 +1,9 @@
 import Highlight from "@/components/Highlight";
 import { BreachProtocol, Dialogue, Scanner } from "@/components/worlds/nightcity/NightCityInteractive";
 import HeadLook from "@/components/worlds/nightcity/HeadLook";
-import NightCityStreet from "@/components/worlds/nightcity/NightCityStreet";
+import HoloKoi from "@/components/worlds/nightcity/HoloKoi";
+import NightCityCity from "@/components/worlds/nightcity/NightCityCity";
+import Netrunner from "@/components/worlds/nightcity/Netrunner";
 import Reveal from "@/components/worlds/Reveal";
 import WorldSwitch from "@/components/worlds/WorldSwitch";
 import WorldTheme from "@/components/worlds/WorldTheme";
@@ -26,13 +28,14 @@ const bootLines = [
 // Where each skill would sit if it were an augmentation.
 const slots = ["Cranium", "Eyes", "Torso", "Arms", "Hands", "Back", "Legs", "Skin", "Nervous system"];
 
+// Section headings echo the hero: black type on a slab of yellow. The
+// section's system label only shows up when you scan.
 const Heading = ({ kicker, children }: { kicker: string; children: React.ReactNode }) => (
-  <div className="mb-10">
-    <p className="font-tech text-xs text-[var(--nc-cyan)]">{kicker}</p>
-    <h2 className="mt-1 font-rajdhani text-[clamp(2.6rem,7vw,6rem)] font-bold uppercase italic leading-[0.9] tracking-wide text-[var(--nc-yellow)]">
+  <Reveal className="nc-reveal mb-12" data-scan={kicker.replace("// ", "Section // ")}>
+    <h2 className="nc-heading w-fit py-2 pl-4 pr-12 font-rajdhani text-[clamp(2.6rem,7vw,6rem)] font-bold uppercase italic leading-[0.9] tracking-wide text-black md:pl-6 md:pr-20">
       {children}
     </h2>
-  </div>
+  </Reveal>
 );
 
 export default function NightCityPage() {
@@ -46,13 +49,42 @@ export default function NightCityPage() {
       <div aria-hidden className="nc-scanlines pointer-events-none fixed inset-0 z-40 opacity-50" />
       <Scanner />
 
-      {/* Hero: boot sequence, then the city */}
-      <section className="relative h-[100svh] min-h-[520px] overflow-hidden" data-scan="District // Watson, Kabuki">
+      {/* Hero: boot sequence, then the city, the yellow slab and the netrunner */}
+      <section className="nc-hero relative h-[100svh] min-h-[560px] overflow-hidden" data-scan="District // Watson, Kabuki">
         <div className="nc-city nc-look absolute inset-0">
-          <NightCityStreet />
+          <NightCityCity />
+          <HoloKoi className="pointer-events-none absolute inset-0 h-full w-full" />
+          <Netrunner className="nc-fig absolute bottom-0 right-[-14%] h-[58%] w-auto md:right-[3%] md:h-[86%]" />
         </div>
         <HeadLook target=".nc-look" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#030305]" />
+        <div aria-hidden className="nc-tear pointer-events-none absolute inset-0 z-[6]" />
+
+        {/* the yellow slab: Cyberpunk's signature, cutting across the frame */}
+        <div className="nc-slab absolute left-0 top-0 z-[8] flex h-[52%] w-[88vw] flex-col justify-between p-5 pt-16 text-black md:h-full md:w-[min(40vw,600px)] md:p-10 md:pt-24">
+          <p lang="ja" aria-hidden className="nc-kata absolute right-[30%] top-6 font-rajdhani text-[clamp(1.4rem,3vw,2.6rem)] font-bold leading-none [writing-mode:vertical-rl] md:right-[26%] md:top-24">
+            ナイトシティ
+          </p>
+          <p className="font-rajdhani text-[clamp(3.4rem,9vw,8.5rem)] font-bold uppercase italic leading-[0.82] tracking-tight">
+            Night
+            <br />
+            City
+          </p>
+          <div className="hidden pb-24 md:block">
+            <div className="space-y-1 font-tech text-xs">
+              <p>DISTRICT // WATSON, KABUKI</p>
+              <p>NETRUNNER ON DUTY</p>
+            </div>
+            {/* the gig, stamped onto the slab */}
+            <div className="mt-5 w-fit max-w-[16rem] bg-black px-4 py-3 text-[var(--nc-yellow)] [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,0_100%)]">
+              <p className="font-tech text-[11px]">NEW GIG</p>
+              <p className="mt-1 font-rajdhani text-xl font-bold uppercase leading-tight text-white">Meet the netrunner</p>
+              <p className="mt-1 font-tech text-xs text-white/70">Scroll down to find him</p>
+            </div>
+            <div aria-hidden className="nc-barcode mt-4 h-8 w-40" />
+          </div>
+        </div>
+
         <div aria-hidden className="nc-boot absolute inset-0 z-20 flex items-center bg-black px-6 md:px-16">
           <div className="font-tech text-sm text-[var(--nc-cyan)] md:text-lg">
             {bootLines.map((line, i) => (
@@ -64,39 +96,23 @@ export default function NightCityPage() {
         </div>
 
         {/* HUD */}
-        <header className="relative z-10 flex items-center justify-between px-5 pt-5 font-tech text-sm md:px-10">
-          <span className="text-[var(--nc-yellow)]">DEVAYU.NET</span>
-          <WorldSwitch className="text-[var(--nc-cyan)] hover:text-[var(--nc-yellow)]">Disconnect</WorldSwitch>
+        <div aria-hidden className="nc-frame pointer-events-none absolute inset-3 z-[9] md:inset-5">
+          <span className="left-0 top-0 border-l-2 border-t-2" />
+          <span className="right-0 top-0 border-r-2 border-t-2" />
+          <span className="bottom-0 left-0 border-b-2 border-l-2" />
+          <span className="bottom-0 right-0 border-b-2 border-r-2" />
+        </div>
+        <header className="relative z-10 flex items-center justify-between px-6 pt-6 font-tech text-sm md:px-12 md:pt-8">
+          <span className="text-black">DEVAYU.NET</span>
+          <WorldSwitch className="text-black hover:text-[var(--nc-red)] md:text-[var(--nc-cyan)] md:hover:text-[var(--nc-yellow)]">Disconnect</WorldSwitch>
         </header>
-        <div className="nc-hud-in absolute right-5 top-20 z-10 w-64 border-l-2 border-[var(--nc-yellow)] bg-black/55 px-4 py-3 backdrop-blur-sm md:right-10" style={{ animationDelay: "3.2s" }}>
-          <p className="font-tech text-[11px] text-[var(--nc-yellow)]">NEW GIG</p>
-          <p className="mt-1 font-rajdhani text-xl font-bold uppercase leading-tight">Meet the netrunner</p>
-          <p className="mt-2 flex items-center gap-2 font-tech text-xs text-[#d8f6ff]/80">
-            <span className="inline-block size-2 rotate-45 border border-[var(--nc-yellow)]" />
-            Scroll down to find him
-          </p>
-        </div>
-        <div aria-hidden className="nc-hud-in pointer-events-none absolute left-1/2 top-[44%] z-10 -translate-x-1/2 -translate-y-1/2" style={{ animationDelay: "3.4s" }}>
-          <div className="nc-reticle relative size-28 md:size-36">
-            <span className="absolute left-0 top-0 size-5 border-l-2 border-t-2 border-[var(--nc-yellow)]" />
-            <span className="absolute right-0 top-0 size-5 border-r-2 border-t-2 border-[var(--nc-yellow)]" />
-            <span className="absolute bottom-0 left-0 size-5 border-b-2 border-l-2 border-[var(--nc-yellow)]" />
-            <span className="absolute bottom-0 right-0 size-5 border-b-2 border-r-2 border-[var(--nc-yellow)]" />
-            <span className="absolute left-1/2 top-1/2 size-1.5 -translate-x-1/2 -translate-y-1/2 bg-[var(--nc-red)]" />
-          </div>
-          <p className="mt-2 text-center font-tech text-[11px] text-[var(--nc-yellow)]">SCANNING ▸ PRESS Q</p>
-        </div>
-        <ul aria-hidden className="absolute left-5 top-24 z-10 hidden space-y-1.5 font-tech text-xs md:left-10 md:block">
-          {["+1 VISITOR DETECTED", "STREET CRED +12", "SHARD ACQUIRED: AYUSH.PROFILE"].map((n, i) => (
-            <li key={n} className="nc-hud-in w-fit bg-black/60 px-2 py-1 text-[var(--nc-cyan)]" style={{ animationDelay: `${3.6 + i * 0.6}s` }}>
-              {n}
-            </li>
-          ))}
-        </ul>
-        <div className="nc-hud-in absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-center font-rajdhani text-lg font-bold uppercase italic tracking-widest text-[var(--nc-yellow)]" style={{ animationDelay: "4s" }}>
+        <div className="nc-hud-in absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-center font-rajdhani text-lg font-bold uppercase italic tracking-widest text-[var(--nc-yellow)]" style={{ animationDelay: "4s" }}>
           <p>Jack in</p>
           <p aria-hidden className="nc-chevron font-tech text-sm">▼</p>
         </div>
+        <p aria-hidden className="absolute bottom-8 right-8 z-10 hidden font-tech text-[11px] text-[var(--nc-yellow)]/80 md:right-12 md:block">
+          PRESS Q TO SCAN
+        </p>
       </section>
 
       <main className="relative z-10 mx-auto max-w-6xl px-5 pb-40 md:px-10">
@@ -167,11 +183,11 @@ export default function NightCityPage() {
               <Reveal
                 as="li"
                 key={w.id}
-                className={cn("nc-reveal nc-clip border-l-4 border-[var(--nc-red)] bg-[#12060a]/85 p-6 md:p-8", i === 1 && "md:mt-24")}
+                className={cn("nc-reveal nc-clip border border-[var(--nc-red)]/35 bg-[#12060a]/85 p-6 md:p-8", i === 1 && "md:mt-24")}
                 data-scan={`Employer // ${w.location}`}
               >
-                <p className="font-tech text-xs text-[var(--nc-red)]">{w.yearString}</p>
-                <h3 className="mt-1 font-rajdhani text-4xl font-bold uppercase">{w.location}</h3>
+                <p className="w-fit bg-[var(--nc-red)] px-2 py-0.5 font-tech text-xs text-black">{w.yearString}</p>
+                <h3 className="mt-3 font-rajdhani text-4xl font-bold uppercase">{w.location}</h3>
                 <p className="text-[#d8f6ff]/70">{w.title}</p>
                 <ul className="mt-4 space-y-2 text-lg">
                   {w.description.map((d, j) => (
