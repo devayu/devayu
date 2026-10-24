@@ -1,6 +1,5 @@
 "use client";
 
-import { HeroBackground } from "@/components/HeroBackground";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -33,7 +32,6 @@ export default function VoidPage() {
       onKeyDown={handleKonamiCode}
       tabIndex={0}
     >
-      <HeroBackground />
 
       {/* Glitch overlay */}
       <div className="absolute inset-0 opacity-10">

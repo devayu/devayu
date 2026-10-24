@@ -1,5 +1,11 @@
 import { Client } from "@notionhq/client";
-import { NotionRichText, NotionProperty, NotionFile } from "@/types";
+import {
+  NotionFile,
+  NotionPage,
+  NotionProperty,
+  NotionRichText,
+  TransformedNotionItem,
+} from "@/types";
 
 // Initialize Notion client
 export const notion = new Client({
@@ -40,4 +46,48 @@ export const getPropertyValue = (
     default:
       return null;
   }
+};
+
+// Fetches every page in the fragments database, flattened into plain values.
+export const getFragments = async (): Promise<TransformedNotionItem[]> => {
+  const databaseId = process.env.NOTION_DB_ID;
+  if (!databaseId) {
+    throw new Error("NOTION_DB_ID is not configured");
+  }
+
+  const response = await notion.databases.query({ database_id: databaseId });
+
+  return response.results.map((page) => {
+    const notionPage = page as NotionPage;
+    const properties = notionPage.properties;
+
+    const transformed: TransformedNotionItem = {
+      id: notionPage.id,
+      created_time: notionPage.created_time,
+      last_edited_time: notionPage.last_edited_time,
+      url: notionPage.url,
+    };
+
+    if (notionPage.cover) {
+      transformed.cover = {
+        type: notionPage.cover.type,
+        url: notionPage.cover.url,
+        expiry_time: notionPage.cover.expiry_time || null,
+      };
+    }
+
+    if (notionPage.icon) {
+      transformed.icon = {
+        type: notionPage.icon.type,
+        url: notionPage.icon.url,
+      };
+    }
+
+    Object.keys(properties).forEach((propertyName) => {
+      const key = propertyName.toLowerCase().replace(/\s+/g, "_");
+      transformed[key] = getPropertyValue(properties, propertyName);
+    });
+
+    return transformed;
+  });
 };

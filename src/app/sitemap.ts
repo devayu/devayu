@@ -4,10 +4,11 @@ import { siteConfig } from '@/lib/seo';
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
-    '/projects',
-    '/about',
-    '/contact',
-    // Add any other pages you have
+    '/noir',
+    '/frontier',
+    '/night-city',
+    '/yotei',
+    '/%E2%88%85',
   ];
 
   return routes.map((route) => ({

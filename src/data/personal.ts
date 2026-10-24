@@ -1,41 +1,32 @@
-import { SocialLink } from '@/types';
+import { SocialLink } from "@/types";
 
 export const personalInfo = {
-  name: 'Ayush Maurya',
-  title: 'Full Stack Developer',
-  bio: "I'm a full stack developer who loves building end-to-end solutions with React and Spring Boot. Right now, I'm working on Beacon, a tool that detects accessibility issues and helps make the web more inclusive.",
-  secondaryBio: "When I'm not coding, I'm usually tinkering with side projects, books, or music.",
-  location: 'India',
-  email: 'ayush@example.com',
-  calendarLink: 'https://cal.com/idntknw/quick-chat'
+  name: "Ayush Maurya",
+  title: "Full Stack Developer",
+  location: "India",
+  email: "ayushmaurya36@gmail.com",
+  calendarLink: "https://cal.com/idntknw/quick-chat",
+  currentProject: {
+    name: "Beacon",
+    href: "https://github.com/devayu/beacon.git",
+    blurb: "a tool that finds accessibility issues and helps make the web work for more people",
+  },
 };
 
 export const socialLinks: SocialLink[] = [
-  {
-    name: 'GitHub',
-    url: 'https://github.com/yourusername',
-    icon: 'Github'
-  },
-  {
-    name: 'LinkedIn',
-    url: 'https://linkedin.com/in/yourusername',
-    icon: 'Linkedin'
-  },
-  {
-    name: 'Twitter',
-    url: 'https://twitter.com/yourusername',
-    icon: 'Twitter'
-  }
+  { name: "GitHub", url: "https://github.com/devayu", icon: "Github" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/devayu/", icon: "Linkedin" },
+  { name: "X", url: "https://x.com/idntkno_w", icon: "Twitter" },
 ];
 
 export const skills = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'Spring Boot',
-  'Node.js',
-  'Tailwind CSS',
-  'PostgreSQL',
-  'Docker',
-  'AWS'
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Spring Boot",
+  "Node.js",
+  "Tailwind CSS",
+  "PostgreSQL",
+  "Docker",
+  "AWS",
 ];

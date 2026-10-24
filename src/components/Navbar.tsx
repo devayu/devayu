@@ -1,122 +1,48 @@
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import Hanko from "@/components/yotei/Hanko";
+import ThemeToggle from "@/components/ThemeToggle";
+import WorldSwitch from "@/components/worlds/WorldSwitch";
+import { siteConfig } from "@/lib/seo";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 
+const socials = [
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/devayu/", icon: Linkedin },
+  { name: "GitHub", href: siteConfig.links.github, icon: Github },
+  { name: "X", href: siteConfig.links.twitter, icon: Twitter },
+];
+
 const Navbar = () => {
   return (
-    <header className="flex items-center justify-between font-hanken-grotesk">
-      <div className="text-lg font-semibold tracking-tight font-space-grotesk">
-        <Link href="/">
-          devayu<span className="text-primary">.</span>
-        </Link>
-      </div>
+    <header className="relative z-20 flex items-center justify-between gap-4">
+      <Link href="/yotei" className="group flex items-center gap-3" aria-label="Yōtei home">
+        <Hanko className="transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-6 group-hover:scale-110" />
+        <span className="font-mincho text-lg font-bold tracking-tight">
+          devayu
+        </span>
+      </Link>
 
-      {/* Desktop nav keeps existing styling */}
-      <div className="hidden md:flex items-center gap-2">
+      <nav className="flex items-center gap-1 sm:gap-2">
+        <WorldSwitch className="hidden rounded-full px-3 py-2 text-sm text-ink-soft transition-colors hover:text-crimson lg:inline-flex" />
         <Link
-          href="https://www.linkedin.com/in/devayu/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/∅"
+          className="hidden rounded-full px-3 py-2 text-sm text-ink-soft transition-colors hover:text-crimson sm:block"
         >
-          <Button variant="ghost" size="sm">
-            <Linkedin className="w-4 h-4" /> LinkedIn
-          </Button>
+          Fragments
         </Link>
-        <Link
-          href="https://github.com/devayu/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button variant="ghost" size="sm">
-            <Github className="w-4 h-4" /> GitHub
-          </Button>
-        </Link>
-        <Link
-          href="https://x.com/idntkno_w"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button variant="ghost" size="sm">
-            <Twitter className="w-4 h-4" /> X
-          </Button>
-        </Link>
-      </div>
-
-      {/* Mobile menu uses same button styles inside a sheet */}
-      <div className="md:hidden">
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" aria-label="Open menu">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M4 6H20M4 12H20M4 18H20"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-48">
-            <SheetTitle></SheetTitle>
-            <SheetHeader></SheetHeader>
-            <div className="mt-6 flex flex-col gap-3 font-hanken-grotesk">
-              <Link
-                href="https://linkedin.com/in/ayushmaurya-work"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="w-full justify-start"
-                >
-                  <Linkedin className="w-4 h-4" /> LinkedIn
-                </Button>
-              </Link>
-              <Link
-                href="https://github.com/devayu/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="w-full justify-start"
-                >
-                  <Github className="w-4 h-4" /> GitHub
-                </Button>
-              </Link>
-              <Link
-                href="https://x.com/idntkno_w"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="w-full justify-start"
-                >
-                  <Twitter className="w-4 h-4" /> X
-                </Button>
-              </Link>
-            </div>
-          </SheetContent>
-        </Sheet>
-      </div>
+        {socials.map(({ name, href, icon: Icon }) => (
+          <Link
+            key={name}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={name}
+            className="grid size-9 place-items-center rounded-full text-ink-soft transition-[color,transform] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:text-crimson"
+          >
+            <Icon className="size-[18px]" strokeWidth={1.6} />
+          </Link>
+        ))}
+        <ThemeToggle className="ml-1" />
+      </nav>
     </header>
   );
 };

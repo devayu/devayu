@@ -1,24 +1,10 @@
-import Footer from "@/components/Footer";
+import AudioRoot from "@/components/audio/AudioRoot";
 import { StructuredData } from "@/components/StructuredData";
+import { themeScript } from "@/hooks/useTheme";
 import { defaultMetadata } from "@/lib/seo";
 import type { Metadata, Viewport } from "next";
-import { EB_Garamond, Hanken_Grotesk, Space_Grotesk } from "next/font/google";
+import { allFonts } from "@/lib/fonts";
 import "./globals.css";
-
-const garamond = EB_Garamond({
-  variable: "--font-garamond",
-  subsets: ["latin"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-});
-
-const hankenGrotesk = Hanken_Grotesk({
-  variable: "--font-hanken-grotesk",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = defaultMetadata;
 
@@ -27,8 +13,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: "(prefers-color-scheme: light)", color: "#edf0f2" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0907" },
   ],
 };
 
@@ -38,8 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" data-theme="atsu" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <StructuredData />
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -60,7 +47,6 @@ export default function RootLayout({
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        {/* Additional SEO tags */}
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -70,11 +56,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${hankenGrotesk.variable} ${garamond.variable} antialiased min-h-screen bg-background text-foreground`}
+        className={`${allFonts} antialiased min-h-screen`}
         suppressHydrationWarning
       >
         {children}
-        <Footer />
+        <AudioRoot />
       </body>
     </html>
   );

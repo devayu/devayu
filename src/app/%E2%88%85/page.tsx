@@ -1,63 +1,51 @@
-import { Suspense } from "react";
-import NotionGrid from "@/components/NotionGrid";
-import { HeroBackground } from "@/components/HeroBackground";
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WorldTheme from "@/components/worlds/WorldTheme";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import Navbar from "@/components/Navbar";
+import NotionGrid from "@/components/NotionGrid";
+import { getFragments } from "@/lib/notion";
+import type { Metadata } from "next";
+import { Suspense } from "react";
 
-async function fetchNotionData() {
-  try {
-    const baseUrl =
-      process.env.NODE_ENV === "production"
-        ? process.env.NEXT_PUBLIC_BASE_URL
-        : "http://localhost:3000";
+export const revalidate = 3600;
 
-    const response = await fetch(`${baseUrl}/api/notion`, {
-      next: { revalidate: 3600 },
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch data");
-    }
-
-    const result = await response.json();
-    return result.data || [];
-  } catch (error) {
-    console.error("Error fetching Notion data:", error);
-    return [];
-  }
-}
+export const metadata: Metadata = {
+  title: "Fragments",
+  description: "Little pieces of thoughts, quotes, and images I've collected.",
+};
 
 async function NotionContent() {
-  const notionData = await fetchNotionData();
-
-  return (
-    <NotionGrid
-      data={notionData}
-      columns={3}
-      showImages={true}
-      showDates={true}
-    />
-  );
+  let fragments: Awaited<ReturnType<typeof getFragments>> = [];
+  try {
+    fragments = await getFragments();
+  } catch (error) {
+    console.error("Error fetching Notion data:", error);
+  }
+  return <NotionGrid data={fragments} />;
 }
 
 export default function FragmentsPage() {
   return (
-    <div className="relative min-h-screen">
-      <HeroBackground />
-      <main className="relative px-6 md:px-12 lg:px-24 py-16">
-        <Navbar />
-        <div className="mt-5 md:mt-10">
-          <h1 className="text-xl font-bold tracking-tight text-primary font-space-grotesk">
-            Fragments
-          </h1>
-          <p className="font-garamond text-muted-foreground italic font-semibold">
-            Little pieces of thoughts, quotes, and images I&apos;ve collected.
-          </p>
-          <Suspense fallback={<LoadingSpinner />}>
-            <NotionContent />
-          </Suspense>
-        </div>
-      </main>
-    </div>
+    <>
+    <WorldTheme slug="yotei" />
+    <main className="relative px-6 pt-5 md:px-12 md:pt-8 lg:px-24">
+      <Navbar />
+      <div className="mx-auto mt-16 max-w-6xl md:mt-24">
+        <h1 className="flex items-baseline gap-4 font-mincho text-5xl font-extrabold md:text-6xl">
+          Fragments
+          <span lang="ja" aria-hidden className="text-xl font-medium text-ink-soft/60">
+            絵馬
+          </span>
+        </h1>
+        <p className="mt-3 max-w-md text-lg text-ink-soft">
+          Little pieces of thoughts, quotes, and images I&apos;ve collected.
+        </p>
+        <Suspense fallback={<LoadingSpinner />}>
+          <NotionContent />
+        </Suspense>
+      </div>
+    </main>
+    <Footer />
+    </>
   );
 }

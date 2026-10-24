@@ -1,21 +1,16 @@
 import { WorkExperience } from "@/types";
 
+// Wrap a phrase in **double asterisks** to highlight it.
 export const workExperience: WorkExperience[] = [
   {
     id: "agilon-sse",
     title: "Senior Software Engineer",
     location: "agilon Health",
     description: [
-      `<div class="flex items-start gap-2 mb-2">
-        <span class="text-primary font-bold">•</span>
-        <span>Worked on migration of a legacy groovy monolith application into Spring boot microservices achieving a <span class="text-primary font-extrabold font-garamond italic">60% performance boost</span>.</span>
-      </div>`,
-      `<div class="flex items-start gap-2">
-        <span class="text-primary font-bold">•</span>
-        <span>Architected and developd multiple react modules to enhance patient conditions review, generating an estimated <span class="text-primary font-extrabold font-garamond italic">$10M revenue impact</span>.</span>
-      </div>`,
+      "Migrated a legacy Groovy monolith into Spring Boot microservices, for a **60% performance boost**.",
+      "Architected and built React modules for reviewing patient conditions, with an estimated **$10M revenue impact**.",
     ],
-    yearString: "Oct 2022 - Present",
+    yearString: "Oct 2022 – Present",
     time: "full-time",
   },
   {
@@ -23,16 +18,10 @@ export const workExperience: WorkExperience[] = [
     title: "Freelance",
     location: "A1 Associates",
     description: [
-      `<div class="flex items-start gap-2 mb-2">
-        <span class="text-primary font-bold">•</span>
-        <span>Designed and built a responsive landing page with Next.js.</span>
-      </div>`,
-      `<div class="flex items-start gap-2">
-        <span class="text-primary font-bold">•</span>
-        <span>Implemented SEO optimizations that ranked the company in the <span class="text-primary font-extrabold font-garamond italic">Top 5 Google search results</span> for its name.</span>
-      </div>`,
+      "Designed and built a responsive landing page with Next.js.",
+      "SEO work that put the company in the **top 5 Google results** for its name.",
     ],
-    yearString: "2024 - Freelance",
+    yearString: "2024",
     time: "part-time",
   },
 ];
