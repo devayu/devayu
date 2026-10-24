@@ -9,7 +9,9 @@ export function FollowWind() {
   const follow = () => {
     setGust((g) => g + 1);
     audio.sfx("slash");
-    window.setTimeout(() => document.getElementById("scroll")?.scrollIntoView({ behavior: "smooth" }), 350);
+    window.dispatchEvent(new Event("yotei:gust"));
+    // let the gust tear through the field before carrying you down
+    window.setTimeout(() => document.getElementById("scroll")?.scrollIntoView({ behavior: "smooth" }), 900);
   };
   return (
     <>

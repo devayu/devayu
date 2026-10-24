@@ -151,8 +151,18 @@ export default function WorldSelect() {
               key={world.slug}
               role="option"
               aria-selected={isActive}
+              onPointerMove={(e) => {
+                // Tilt toward the cursor, like holding a character card.
+                const r = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty("--rx", (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3));
+                e.currentTarget.style.setProperty("--ry", (((e.clientY - r.top) / r.height) * 2 - 1).toFixed(3));
+              }}
+              onPointerLeave={(e) => {
+                e.currentTarget.style.setProperty("--rx", "0");
+                e.currentTarget.style.setProperty("--ry", "0");
+              }}
               className={cn(
-                "relative min-h-[64px] overflow-hidden rounded-md transition-[flex-grow,opacity,filter] duration-500 ease-[cubic-bezier(0.34,1.4,0.64,1)]",
+                "world-card relative min-h-[64px] overflow-hidden rounded-md transition-[flex-grow,opacity,filter] duration-500 ease-[cubic-bezier(0.34,1.4,0.64,1)]",
                 isActive ? "flex-[3.2]" : "flex-1",
                 launching !== null && !isLaunching && "opacity-40",
                 isLaunching && "flex-[4]"
@@ -175,7 +185,7 @@ export default function WorldSelect() {
               >
                 <Art
                   className={cn(
-                    "absolute inset-0 h-full w-full transition-[filter,transform] duration-700",
+                    "card-art absolute inset-0 h-full w-full transition-[filter] duration-700",
                     isActive ? "scale-100 grayscale-0" : "scale-105 brightness-50 grayscale"
                   )}
                 />
@@ -183,6 +193,8 @@ export default function WorldSelect() {
                   aria-hidden
                   className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"
                 />
+                {/* light catching the card's surface */}
+                <span aria-hidden className="card-sheen absolute inset-0" />
                 {/* selection frame */}
                 <span
                   aria-hidden
@@ -192,7 +204,7 @@ export default function WorldSelect() {
                   )}
                   style={{ borderColor: accent[world.slug] }}
                 />
-                <span className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-4 md:p-6">
+                <span className="card-title absolute inset-x-0 bottom-0 flex flex-col gap-1 p-4 md:p-6">
                   <span
                     className={cn(
                       "leading-none transition-[font-size] duration-500",

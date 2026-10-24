@@ -134,6 +134,7 @@ export default function NightCityStreet() {
       </defs>
 
       {/* sky strip and the megatower at the end of the street */}
+      <g className="ncl" style={{ ["--d" as string]: 0.12 }}>
       <rect width={W} height={H} fill="url(#ncs-sky)" />
       <circle cx={VP.x} cy={VP.y - 120} r="260" fill="url(#ncs-tower-glow)" />
       <path d={`M${VP.x - 40} ${VP.y + 80} L ${VP.x - 28} ${VP.y - 280} L ${VP.x} ${VP.y - 360} L ${VP.x + 28} ${VP.y - 280} L ${VP.x + 40} ${VP.y + 80} Z`} fill="#0a0410" />
@@ -142,7 +143,10 @@ export default function NightCityStreet() {
       ))}
       <circle cx={VP.x} cy={VP.y - 362} r="4" fill="#ff003c" className="art-flicker" />
 
+      </g>
+
       {/* holographic koi swimming over the street */}
+      <g className="ncl" style={{ ["--d" as string]: 0.4 }}>
       <g opacity="0.85">
         <g className="koi">
           <path d="M0 0 C 30 -26 90 -26 130 -4 L 170 -26 L 160 0 L 170 26 L 130 4 C 90 26 30 26 0 0 Z" fill="url(#ncs-koi)" />
@@ -152,7 +156,10 @@ export default function NightCityStreet() {
         </g>
       </g>
 
+      </g>
+
       {/* the street, wet */}
+      <g className="ncl" style={{ ["--d" as string]: 0.55 }}>
       <path d={`M0 ${H} L ${W} ${H} L ${VP.x + 60} ${VP.y + 70} L ${VP.x - 60} ${VP.y + 70} Z`} fill="url(#ncs-street)" />
       <path d={`M${VP.x} ${VP.y + 70} L ${VP.x - 6} ${H} M ${VP.x} ${VP.y + 70} L ${VP.x + 6} ${H}`} stroke="#fcee0a" strokeWidth="3" strokeDasharray="30 40" opacity="0.6" />
       {allSigns
@@ -162,6 +169,10 @@ export default function NightCityStreet() {
           return <rect key={i} x={x} y={groundY(s.f) - 4} width={18 * (1 - s.f)} height={(H - groundY(s.f)) * 0.9 + 20} fill={s.color} opacity="0.22" />;
         })}
 
+      </g>
+
+      {/* walls, cables and neon: the nearest layer */}
+      <g className="ncl" style={{ ["--d" as string]: 1 }}>
       {/* walls */}
       {([
         [left, 1],
@@ -189,19 +200,26 @@ export default function NightCityStreet() {
         <SignShape key={i} s={s} />
       ))}
 
+      </g>
+
       {/* steam from the vents */}
+      <g className="ncl" style={{ ["--d" as string]: 0.8 }}>
       <g fill="#ffd7f0" opacity="0.12">
         <ellipse cx="560" cy="760" rx="90" ry="30" className="nc-steam" />
         <ellipse cx="1080" cy="800" rx="120" ry="36" className="nc-steam" style={{ animationDelay: "-3s" }} />
       </g>
 
-      {/* rain */}
+      </g>
+
+      {/* rain, right against the lens */}
+      <g className="ncl" style={{ ["--d" as string]: 1.6 }}>
       <g stroke="#9ff6ff" strokeWidth="1" opacity="0.28" className="art-rain">
         {Array.from({ length: 130 }, (_, i) => {
           const x = rain() * (W + 60) - 30;
           const y = rain() * H - 60;
           return <path key={i} d={`M${x.toFixed(0)} ${y.toFixed(0)} l -5 26`} />;
         })}
+      </g>
       </g>
     </svg>
   );

@@ -1,5 +1,6 @@
 import Highlight from "@/components/Highlight";
 import { BreachProtocol, Dialogue, Scanner } from "@/components/worlds/nightcity/NightCityInteractive";
+import HeadLook from "@/components/worlds/nightcity/HeadLook";
 import NightCityStreet from "@/components/worlds/nightcity/NightCityStreet";
 import Reveal from "@/components/worlds/Reveal";
 import WorldSwitch from "@/components/worlds/WorldSwitch";
@@ -47,9 +48,10 @@ export default function NightCityPage() {
 
       {/* Hero: boot sequence, then the city */}
       <section className="relative h-[100svh] min-h-[520px] overflow-hidden" data-scan="District // Watson, Kabuki">
-        <div className="nc-city absolute inset-0">
+        <div className="nc-city nc-look absolute inset-0">
           <NightCityStreet />
         </div>
+        <HeadLook target=".nc-look" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#030305]" />
         <div aria-hidden className="nc-boot absolute inset-0 z-20 flex items-center bg-black px-6 md:px-16">
           <div className="font-tech text-sm text-[var(--nc-cyan)] md:text-lg">

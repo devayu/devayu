@@ -2,6 +2,7 @@
 
 import { personalInfo, socialLinks } from "@/data";
 import { audio } from "@/lib/audio/manager";
+import { setTimeScale } from "@/lib/timewarp";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 
@@ -79,11 +80,19 @@ export function NoirHud() {
     };
   }, []);
 
+  // Bullet time really slows the world: rain, every animation and the music.
   useEffect(() => {
     if (bullet) audio.sfx("heartbeat");
     document.documentElement.classList.toggle("bullet-time", bullet);
-    return () => document.documentElement.classList.remove("bullet-time");
+    setTimeScale(bullet ? 0.22 : 1);
   }, [bullet]);
+  useEffect(
+    () => () => {
+      document.documentElement.classList.remove("bullet-time");
+      setTimeScale(1, 0);
+    },
+    []
+  );
 
   return (
     <>

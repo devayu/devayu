@@ -300,9 +300,13 @@ export function BreachProtocol() {
 
 export function Scanner() {
   const [on, setOn] = useState(false);
+  const [pulse, setPulse] = useState(0);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key.toLowerCase() === "q" && !e.metaKey && !e.ctrlKey) setOn((v) => !v);
+      if (e.key.toLowerCase() === "q" && !e.metaKey && !e.ctrlKey) {
+        setOn((v) => !v);
+        setPulse((p) => p + 1);
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -316,9 +320,13 @@ export function Scanner() {
   return (
     <>
       <div aria-hidden className="scan-overlay pointer-events-none fixed inset-0 z-40" />
+      {pulse > 0 && on && <div key={pulse} aria-hidden className="scan-pulse pointer-events-none fixed z-[41]" />}
       <button
         type="button"
-        onClick={() => setOn((v) => !v)}
+        onClick={() => {
+          setOn((v) => !v);
+          setPulse((p) => p + 1);
+        }}
         aria-pressed={on}
         className="nc-clip-sm fixed bottom-4 right-4 z-50 flex h-11 items-center gap-2 border border-[var(--nc-cyan)] bg-black/80 px-4 font-rajdhani text-base font-bold uppercase italic text-[var(--nc-cyan)] md:bottom-6 md:right-6"
       >

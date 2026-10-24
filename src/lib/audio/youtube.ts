@@ -13,6 +13,7 @@ export type YTPlayer = {
   getCurrentTime(): number;
   getVideoData(): { video_id: string };
   getPlayerState(): number;
+  setPlaybackRate(rate: number): void;
 };
 
 declare global {

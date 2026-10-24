@@ -1,6 +1,7 @@
 import Highlight from "@/components/Highlight";
 import { NoirHero } from "@/components/worlds/heroes";
 import { NoirHud, NoirTv, PainkillerShelf, Typewriter } from "@/components/worlds/noir/NoirInteractive";
+import RainGlass from "@/components/worlds/noir/RainGlass";
 import Reveal from "@/components/worlds/Reveal";
 import WorldSwitch from "@/components/worlds/WorldSwitch";
 import WorldTheme from "@/components/worlds/WorldTheme";
@@ -62,6 +63,7 @@ export default function NoirPage() {
         <section className="relative mx-auto mt-4 h-[86svh] min-h-[480px] max-w-[1400px] px-4 md:px-8">
           <div className="noir-cut relative h-full overflow-hidden border-2 border-[#d8d2c0] bg-[#0b0d10]">
             <NoirHero />
+            <RainGlass source='[data-hero="noir"]' />
           </div>
           <div className="noir-inset absolute right-6 top-6 w-28 border-2 border-[#d8d2c0] shadow-[8px_8px_0_#000] md:right-14 md:top-10 md:w-44">
             <ClockArt />

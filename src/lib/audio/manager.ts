@@ -287,6 +287,19 @@ export const audio = {
     audio.unlock();
   },
 
+  /** Slow the soundtrack down (bullet time, Dead Eye). Pitch drops with it. */
+  setRate(rate: number) {
+    if (localEl) {
+      localEl.preservesPitch = false;
+      localEl.playbackRate = Math.max(0.25, rate);
+    }
+    if (player && state.source === "youtube") {
+      // YouTube only accepts a fixed set of speeds.
+      const allowed = [0.25, 0.5, 0.75, 1];
+      player.setPlaybackRate(allowed.reduce((a, b) => (Math.abs(b - rate) < Math.abs(a - rate) ? b : a)));
+    }
+  },
+
   /** One-shot effects (gunshot, heartbeat, glitch, blade, typewriter key). */
   sfx(kind: "shot" | "heartbeat" | "glitch" | "slash" | "type") {
     if (!ctx || !master || !state.enabled) return;

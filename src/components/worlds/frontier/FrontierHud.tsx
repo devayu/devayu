@@ -1,6 +1,7 @@
 "use client";
 
 import { audio } from "@/lib/audio/manager";
+import { setTimeScale } from "@/lib/timewarp";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type Mark = { id: number; x: number; y: number; fired: boolean };
@@ -45,7 +46,18 @@ export default function FrontierHud() {
 
   const fire = useCallback(() => {
     const count = Math.max(1, marksRef.current.length);
-    for (let i = 0; i < count; i++) window.setTimeout(() => audio.sfx("shot"), i * 140);
+    // Time snaps back as the hammer falls.
+    setTimeScale(1, 150);
+    const world = document.querySelector<HTMLElement>(".frontier-world");
+    for (let i = 0; i < count; i++) {
+      window.setTimeout(() => {
+        audio.sfx("shot");
+        // restart the kick for every shot
+        world?.classList.remove("is-kicked");
+        void world?.offsetWidth;
+        world?.classList.add("is-kicked");
+      }, i * 140);
+    }
     setMarks((ms) => ms.map((m) => ({ ...m, fired: true })));
     window.setTimeout(() => {
       setMarks([]);
@@ -71,6 +83,12 @@ export default function FrontierHud() {
   }, []);
 
   // The meter drains while Dead Eye is on and refills when it's off.
+  // Dead Eye slows everything: animations, dust, tumbleweed and the music.
+  useEffect(() => {
+    setTimeScale(deadEye ? 0.15 : 1, deadEye ? 350 : 600);
+  }, [deadEye]);
+  useEffect(() => () => setTimeScale(1, 0), []);
+
   useEffect(() => {
     document.documentElement.classList.toggle("dead-eye", deadEye);
     if (deadEye) audio.sfx("heartbeat");

@@ -3,8 +3,8 @@ import Emakimono from "@/components/yotei/Emakimono";
 import Haiku from "@/components/yotei/Haiku";
 import KintsugiRule from "@/components/yotei/KintsugiRule";
 import MythicTales from "@/components/yotei/MythicTales";
-import Petals from "@/components/yotei/Petals";
 import Sash from "@/components/yotei/Sash";
+import WindField from "@/components/yotei/WindField";
 import { FollowWind, KurosawaMode } from "@/components/yotei/YoteiFx";
 import YoteiScene from "@/components/yotei/YoteiScene";
 
@@ -20,7 +20,7 @@ export default function Yotei() {
           }}
         >
           <YoteiScene />
-          <Petals />
+          <WindField />
           <div className="relative z-10 px-6 pt-5 md:px-12 md:pt-8 lg:px-24">
             <Navbar />
             <h1 className="sr-only">Ayush Maurya, full stack developer</h1>

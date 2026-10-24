@@ -46,7 +46,7 @@ const noirWindows = windows(13, noirNear, 720, 0.12);
 export function NoirHero() {
   const rain = seeded(14);
   return (
-    <svg {...heroSvg}>
+    <svg {...heroSvg} data-hero="noir">
       <defs>
         <linearGradient id="nh-sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#05070a" />

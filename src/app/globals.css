@@ -520,18 +520,12 @@
   background: radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 0.65) 100%);
   transition: background 1.2s;
 }
-.bullet-time .noir-rain {
-  --rain-speed: 6s;
-}
 .bullet-time .noir-vignette {
   background: radial-gradient(ellipse at center, transparent 35%, rgb(10 30 60 / 0.75) 100%);
   animation: heartbeat 1.6s ease-in-out infinite;
 }
 .bullet-time .noir-page {
   filter: grayscale(1) contrast(1.15) sepia(0.15) hue-rotate(180deg);
-}
-.bullet-time .art-rain {
-  animation-duration: 6s;
 }
 .noir-page {
   transition: filter 1.2s;
@@ -1463,4 +1457,94 @@ html.scanning [data-scan]::after {
   filter: blur(4px);
   transition-duration: 0.5s;
   transition-delay: 0.25s;
+}
+
+/* Dead Eye's shots kick the camera */
+@keyframes fr-kick {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-7px, 4px) rotate(-0.25deg); }
+  40% { transform: translate(6px, -3px) rotate(0.2deg); }
+  60% { transform: translate(-3px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+.frontier-world.is-kicked {
+  animation: fr-kick 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ——— Night City: head look and scan pulse ——— */
+.nc-look {
+  perspective: 1200px;
+  overflow: hidden;
+}
+.nc-look > svg {
+  transform: scale(1.1) rotateY(calc(var(--mx, 0) * 2.5deg)) rotateX(calc(var(--my, 0) * -1.6deg));
+  transform-origin: 50% 45%;
+}
+.ncl {
+  transform: translate(calc(var(--mx, 0) * var(--d) * -34px), calc(var(--my, 0) * var(--d) * -18px));
+}
+/* An expanding ring from the reticle. */
+@keyframes scan-pulse {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    width: 190vmax;
+    height: 190vmax;
+    opacity: 0;
+  }
+}
+.scan-pulse {
+  left: 50%;
+  top: 45%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  border: 2px solid #fcee0a;
+  box-shadow:
+    0 0 24px 4px rgb(0 240 255 / 0.45),
+    inset 0 0 40px 8px rgb(252 238 10 / 0.25);
+  animation: scan-pulse 1.4s cubic-bezier(0.25, 0.7, 0.35, 1) forwards;
+}
+html.scanning [data-scan]::after {
+  animation-delay: 0.35s;
+}
+.wind-field[data-gl="on"] .wind-fallback {
+  display: none;
+}
+
+/* ——— Select: character cards ——— */
+.world-card {
+  --rx: 0;
+  --ry: 0;
+  transform: perspective(1100px) rotateY(calc(var(--rx) * 7deg)) rotateX(calc(var(--ry) * -5deg));
+  transition-property: flex-grow, opacity, filter, transform;
+}
+.world-card[aria-selected="true"] {
+  box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.8);
+}
+.world-card .card-art {
+  transform: translate(calc(var(--rx) * -16px), calc(var(--ry) * -10px)) scale(1.1);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s;
+}
+.world-card .card-title {
+  transform: translate(calc(var(--rx) * 10px), calc(var(--ry) * 6px));
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-sheen {
+  opacity: 0;
+  background: radial-gradient(
+    circle at calc(50% + var(--rx) * 45%) calc(50% + var(--ry) * 45%),
+    rgb(255 255 255 / 0.22),
+    transparent 55%
+  );
+  mix-blend-mode: overlay;
+  transition: opacity 0.4s;
+}
+.world-card[aria-selected="true"] .card-sheen {
+  opacity: 1;
 }
