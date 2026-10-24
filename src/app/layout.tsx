@@ -1,4 +1,5 @@
 import AudioRoot from "@/components/audio/AudioRoot";
+import Portal from "@/components/worlds/Portal";
 import { StructuredData } from "@/components/StructuredData";
 import { themeScript } from "@/hooks/useTheme";
 import { defaultMetadata } from "@/lib/seo";
@@ -61,6 +62,7 @@ export default function RootLayout({
       >
         {children}
         <AudioRoot />
+        <Portal />
       </body>
     </html>
   );

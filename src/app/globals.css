@@ -1430,3 +1430,37 @@ html.scanning [data-scan]::after {
   transform: none;
   opacity: 1;
 }
+
+/* ——— Portal title card ——— */
+.portal-title {
+  opacity: 0;
+  transform: scale(1.04);
+  filter: blur(6px);
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s;
+  pointer-events: none;
+}
+.portal-title.is-on {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+@keyframes portal-load {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.portal-title.is-on .portal-loader > span {
+  transform-origin: left;
+  animation: portal-load 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+/* The title lingers as the next world is uncovered, then lifts away. */
+.portal-title.is-leaving {
+  opacity: 0;
+  transform: scale(0.97) translateY(-8px);
+  filter: blur(4px);
+  transition-duration: 0.5s;
+  transition-delay: 0.25s;
+}

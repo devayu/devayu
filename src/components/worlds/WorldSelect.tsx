@@ -3,6 +3,7 @@
 import { worldArt } from "@/components/worlds/art";
 import { worlds, type WorldSlug } from "@/data/worlds";
 import { audio } from "@/lib/audio/manager";
+import { portalStore } from "@/lib/portal/store";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
@@ -70,12 +71,17 @@ export default function WorldSelect() {
   const launch = useCallback(
     (i: number) => {
       if (launching !== null) return;
+      // The portal tears open from the chosen card.
+      const card = document.querySelectorAll<HTMLElement>("[role=option]")[i];
+      const rect = card?.getBoundingClientRect();
+      const origin: [number, number] = rect
+        ? [(rect.left + rect.width / 2) / window.innerWidth, (rect.top + rect.height / 2) / window.innerHeight]
+        : [0.5, 0.5];
+      if (!portalStore.go({ slug: worlds[i].slug, href: worlds[i].href, origin, kind: "enter" })) return;
       setActive(i);
       setLaunching(i);
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      window.setTimeout(() => router.push(worlds[i].href), reduce ? 0 : 650);
     },
-    [launching, router]
+    [launching]
   );
 
   useEffect(() => {
@@ -148,8 +154,8 @@ export default function WorldSelect() {
               className={cn(
                 "relative min-h-[64px] overflow-hidden rounded-md transition-[flex-grow,opacity,filter] duration-500 ease-[cubic-bezier(0.34,1.4,0.64,1)]",
                 isActive ? "flex-[3.2]" : "flex-1",
-                launching !== null && !isLaunching && "flex-[0.0001] opacity-0",
-                isLaunching && "flex-[40]"
+                launching !== null && !isLaunching && "opacity-40",
+                isLaunching && "flex-[4]"
               )}
             >
               <button
@@ -218,16 +224,16 @@ export default function WorldSelect() {
 
       <footer className="relative z-10 mt-5 hidden items-center justify-between pl-44 text-sm tracking-wider text-[#ece8df]/60 md:flex">
         <span className="flex items-center gap-5">
-          <span className="flex items-center gap-2">
+          <span className="flex items-center gap-2 whitespace-nowrap">
             <kbd className="sel-key">←</kbd>
             <kbd className="sel-key">→</kbd> Choose
           </span>
           <span className="flex items-center gap-2">
             <kbd className="sel-key">Enter</kbd> Start
           </span>
-          <span>Hover a world to hear its theme</span>
+          <span className="hidden whitespace-nowrap lg:inline">Hover a world to hear its theme</span>
         </span>
-        <span>It&apos;s the same me in every world. Only the scenery changes.</span>
+        <span className="hidden text-right lg:inline">It&apos;s the same me in every world. Only the scenery changes.</span>
       </footer>
     </main>
   );
