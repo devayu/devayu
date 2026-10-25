@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { dice, hash } from "@/components/worlds/dada/chance";
 import { TransformedNotionItem } from "@/types";
 
 interface NotionGridProps {
@@ -50,71 +51,71 @@ const firstString = (item: TransformedNotionItem, fields: string[]) => {
   return null;
 };
 
-// Each fragment hangs like an ema, the wooden wish plaques at a shrine.
+const PAPERS = ["dd-scrap--news", "dd-scrap--aged", "dd-scrap--slip", "dd-scrap--ticket", "dd-scrap--receipt"];
+
+// Fragments pasted onto a Merz board: each one a scrap of different paper,
+// glued at a chance angle (seeded by its id, so it stays put), photos screened
+// to halftone with a hard scissor cut, text scraps torn along the bottom, and
+// a postmark for the day it arrived.
 const NotionGrid = ({ data }: NotionGridProps) => {
   if (data.length === 0) {
     return (
-      <p className="mt-16 max-w-md text-ink-soft">
-        Nothing is hanging here yet. New fragments added in Notion show up
-        within the hour.
-      </p>
+      <div className="dd-frag-empty">
+        <div className="dd-frag-ticket">
+          <span className="dd-frag-ticket-no" aria-hidden>
+            No 0000
+          </span>
+          <p>Nothing is pasted here yet. New fragments added in Notion show up within the hour.</p>
+          <span className="dd-frag-ticket-stamp" aria-hidden>
+            leer
+          </span>
+        </div>
+      </div>
     );
   }
 
   return (
-    <div className="mt-14 columns-1 gap-8 sm:columns-2 lg:columns-3">
+    <ul className="dd-frag-board">
       {data.map((item, index) => {
         const imageUrl = getImageUrl(item);
         const title = firstString(item, ["name", "title", "heading", "subject"]);
         const description = firstString(item, ["description", "content", "summary", "excerpt", "notes"]);
+        const d = dice(hash(item.id));
+        const tilt = d.sign() * d.range(1, 4.5);
+        const date = new Date(item.created_time);
 
         return (
-          <figure key={item.id} className="ema relative mb-12 break-inside-avoid pt-6">
-            {/* cord and peg */}
-            <span aria-hidden className="absolute left-1/2 top-0 h-7 w-px -translate-x-1/2 bg-crimson" />
-            <span aria-hidden className="absolute left-1/2 top-0 size-2 -translate-x-1/2 -translate-y-1 rounded-full bg-gold" />
-            <div
-              className="relative px-5 pb-5 pt-10 text-[var(--wood-ink)]"
-              style={{
-                clipPath: "polygon(50% 0, 100% 14%, 100% 100%, 0 100%, 0 14%)",
-                background:
-                  "repeating-linear-gradient(176deg, var(--wood) 0 9px, var(--wood-grain) 9px 10px, var(--wood) 10px 23px)",
-              }}
-            >
-              <span aria-hidden className="absolute left-1/2 top-6 size-2 -translate-x-1/2 rounded-full bg-[var(--wood-ink)]/40" />
+          <li
+            key={item.id}
+            className={`dd-scrap ${PAPERS[index % PAPERS.length]}${imageUrl ? " dd-scrap--pic" : " dd-torn"}`}
+            style={{ "--tilt": `${tilt.toFixed(1)}deg` } as React.CSSProperties}
+          >
+            <figure>
               {imageUrl && (
-                <div className="overflow-hidden rounded-md">
+                <div className="dd-scrap-img" style={{ clipPath: `polygon(${d.range(0, 3).toFixed(1)}% 0, 100% ${d.range(0, 4).toFixed(1)}%, ${d.range(97, 100).toFixed(1)}% 100%, 0 ${d.range(96, 100).toFixed(1)}%)` }}>
                   <Image
                     src={imageUrl}
                     alt={title ?? `Fragment ${index + 1}`}
                     width={400}
                     height={300}
-                    className="h-auto max-h-80 w-full object-cover"
+                    className="dd-scrap-photo"
                   />
                 </div>
               )}
-              <figcaption className="mt-4 space-y-2">
-                {title && (
-                  <h2 className="font-mincho text-lg font-bold leading-snug">{title}</h2>
-                )}
-                {description && (
-                  <blockquote className="font-mincho leading-relaxed opacity-80">
-                    “{description}”
-                  </blockquote>
-                )}
-                <p className="pt-1 text-xs opacity-60">
-                  {new Date(item.created_time).toLocaleDateString("en-GB", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
+              <figcaption>
+                {title && <h2 className="dd-scrap-title">{title}</h2>}
+                {description && <blockquote className="dd-scrap-quote">“{description}”</blockquote>}
+                <p className="dd-scrap-date">
+                  <time dateTime={item.created_time}>
+                    {date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
+                  </time>
                 </p>
               </figcaption>
-            </div>
-          </figure>
+            </figure>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };
 

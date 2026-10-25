@@ -10,7 +10,7 @@ export default function Highlight({
 }) {
   return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
     part.startsWith("**") ? (
-      <strong key={i} className={cn("font-mincho font-bold text-crimson", className)}>
+      <strong key={i} className={cn("font-bold", className)}>
         {part.slice(2, -2)}
       </strong>
     ) : (

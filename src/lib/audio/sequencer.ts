@@ -1,7 +1,22 @@
 // Base class for the generative themes. Each theme gets its own output gain
 // (for crossfades) and schedules notes slightly ahead of time on a timer.
+// Every theme runs on one shared transport: same tempo, same step grid, same
+// downbeat. Switching worlds crossfades two themes that are already in time,
+// so the next movement picks up on exactly the beat the last one was at.
 
 export const midi = (n: number) => 440 * Math.pow(2, (n - 69) / 12);
+
+export const BPM = 104;
+export const STEPS_PER_BEAT = 4;
+const STEP = 60 / BPM / STEPS_PER_BEAT;
+let transportStart: number | null = null;
+
+/** Deterministic "chance": the same step always rolls the same number. */
+export const chance = (step: number, salt = 0) => {
+  let h = (step * 374761393 + salt * 668265263) | 0;
+  h = Math.imul(h ^ (h >>> 13), 1274126177);
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+};
 
 export abstract class Theme {
   protected out: GainNode;
@@ -15,8 +30,6 @@ export abstract class Theme {
     protected ctx: AudioContext,
     destination: AudioNode,
     protected reverb: AudioNode,
-    protected bpm: number,
-    protected stepsPerBeat = 2,
     protected swing = 0
   ) {
     this.out = ctx.createGain();
@@ -25,7 +38,7 @@ export abstract class Theme {
   }
 
   protected get stepDur() {
-    return 60 / this.bpm / this.stepsPerBeat;
+    return STEP;
   }
 
   start(fade = 1.5) {
@@ -35,8 +48,10 @@ export abstract class Theme {
     this.out.gain.linearRampToValueAtTime(1, now + fade);
     if (this.timer !== null) return;
     this.extras = this.ambience();
-    this.step = 0;
-    this.nextTime = now + 0.08;
+    // Join the shared transport at its next step rather than starting a bar of our own.
+    transportStart ??= now + 0.08;
+    this.step = Math.max(0, Math.ceil((now + 0.08 - transportStart) / STEP));
+    this.nextTime = transportStart + this.step * STEP;
     this.timer = window.setInterval(() => this.schedule(), 25);
   }
 

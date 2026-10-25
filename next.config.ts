@@ -41,11 +41,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // The four worlds used to be separate pages; they're chapters of one scroll now.
+  // The old game worlds are gone; their links land on the gallery.
   async redirects() {
     return ["noir", "frontier", "night-city", "yotei"].map((slug) => ({
       source: `/${slug}`,
-      destination: `/#${slug}`,
+      destination: "/",
       permanent: false,
     }));
   },

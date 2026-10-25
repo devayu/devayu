@@ -1,36 +1,54 @@
-import Navbar from "@/components/Navbar";
-import YoteiScene from "@/components/yotei/YoteiScene";
-import Link from "next/link";
+import WorldLink from "@/components/gallery/WorldLink";
+import { DadaDefs, Manicule, Rotorelief } from "@/components/worlds/dada/art";
+import DadaHeading from "@/components/worlds/dada/DadaHeading";
+import DadaNav from "@/components/worlds/dada/DadaNav";
+import PaperWorld from "@/components/worlds/dada/PaperWorld";
+import "./dada/dada.css";
 
+// The dead end, as a Dada room: a missing page declared a readymade.
 export default function NotFound() {
   return (
-    <section
-      className="relative h-[100svh] min-h-[620px] overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(to bottom, var(--sky-top), var(--sky-mid) 45%, var(--sky-bottom) 75%)",
-      }}
-    >
-      <YoteiScene />
-      <div className="relative z-10 px-6 pt-5 md:px-12 md:pt-8 lg:px-24">
-        <Navbar />
-        <div className="mt-[12vh] max-w-lg">
-          <h1 className="ink-in font-mincho text-[clamp(4rem,14vw,9rem)] font-extrabold leading-none">
-            404
-          </h1>
-          <p className="ink-in mt-3 text-lg text-ink-soft" style={{ animationDelay: "0.2s" }}>
-            This trail doesn&apos;t lead anywhere. The page may have moved, or
-            the link has a typo.
-          </p>
-          <Link
-            href="/"
-            className="ink-in mt-6 inline-flex h-12 items-center rounded-full bg-crimson px-6 font-medium text-paper transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 active:scale-95"
-            style={{ animationDelay: "0.4s" }}
-          >
-            Back to the home page
-          </Link>
+    <div className="dd-root dd-404">
+      <PaperWorld />
+      <DadaDefs />
+      <header className="dd-top">
+        <DadaNav label="Rooms" />
+      </header>
+      <main className="dd-404-main">
+        <div className="dd-404-num" aria-hidden>
+          <span className="dd-404-four">4</span>
+          <Rotorelief className="dd-404-zero" rim="NOTHING HERE · NOTHING HERE · NOTHING HERE · " id="dd-rim-404" />
+          <span className="dd-404-four dd-404-four--b">4</span>
         </div>
-      </div>
-    </section>
+
+        <div className="dd-404-copy">
+          <DadaHeading as="h1" text="This page is Da|da." loud="Dada" seed={404} hat />
+          <p>
+            Dada is against the future. This page is against the present: whatever you were looking for isn&rsquo;t
+            here. Maybe it was cut up and pasted somewhere else. Maybe it never existed, which is very Dada of it.
+          </p>
+          <p>Either way, I&rsquo;ve signed the nothing and hung it. Please don&rsquo;t touch the art.</p>
+          <WorldLink href="/" className="dd-return">
+            <Manicule className="dd-return-hand" />
+            <span>
+              <b>Return ticket</b>
+              <span>back to the gallery</span>
+            </span>
+            <span className="dd-return-stamp" aria-hidden>
+              retour
+            </span>
+          </WorldLink>
+        </div>
+
+        <figure className="dd-404-frame" aria-label="An empty frame">
+          <div className="dd-404-nothing" aria-hidden>
+            <span className="dd-404-sig">R. Mutt 404</span>
+          </div>
+          <figcaption>
+            <i>Untitled (Page Not Found)</i>, 404. Readymade: nothing, found.
+          </figcaption>
+        </figure>
+      </main>
+    </div>
   );
 }

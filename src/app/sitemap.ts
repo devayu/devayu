@@ -4,6 +4,10 @@ import { siteConfig } from '@/lib/seo';
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
+    '/bauhaus',
+    '/dada',
+    '/pop',
+    '/cubism',
     '/%E2%88%85',
   ];
 

@@ -1,11 +1,12 @@
-import Footer from "@/components/Footer";
-import WorldTheme from "@/components/worlds/WorldTheme";
-import LoadingSpinner from "@/components/LoadingSpinner";
-import Navbar from "@/components/Navbar";
 import NotionGrid from "@/components/NotionGrid";
+import { DadaDefs } from "@/components/worlds/dada/art";
+import DadaHeading from "@/components/worlds/dada/DadaHeading";
+import DadaNav from "@/components/worlds/dada/DadaNav";
+import PaperWorld from "@/components/worlds/dada/PaperWorld";
 import { getFragments } from "@/lib/notion";
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import "../dada/dada.css";
 
 export const revalidate = 3600;
 
@@ -26,26 +27,24 @@ async function NotionContent() {
 
 export default function FragmentsPage() {
   return (
-    <>
-    <WorldTheme slug="yotei" />
-    <main className="relative min-h-screen bg-[var(--paper)] px-6 pt-5 text-[var(--ink)] md:px-12 md:pt-8 lg:px-24">
-      <Navbar />
-      <div className="mx-auto mt-16 max-w-6xl md:mt-24">
-        <h1 className="flex items-baseline gap-4 font-mincho text-5xl font-extrabold md:text-6xl">
-          Fragments
-          <span lang="ja" aria-hidden className="text-xl font-medium text-ink-soft/60">
-            絵馬
-          </span>
-        </h1>
-        <p className="mt-3 max-w-md text-lg text-ink-soft">
-          Little pieces of thoughts, quotes, and images I&apos;ve collected.
-        </p>
-        <Suspense fallback={<LoadingSpinner />}>
+    <div className="dd-root dd-frag">
+      <PaperWorld />
+      <DadaDefs />
+      <header className="dd-top">
+        <DadaNav label="Rooms" />
+      </header>
+      <main className="dd-sec dd-frag-main">
+        <div className="dd-sec-head">
+          <DadaHeading as="h1" text="Frag|ments" loud="Fragments" seed={1919} lean={1} />
+          <p className="dd-lede">
+            Little pieces of thoughts, quotes, and images I&apos;ve collected, pasted down the way Schwitters kept tram
+            tickets: whatever caught my eye, in the order it arrived.
+          </p>
+        </div>
+        <Suspense fallback={<p role="status" className="dd-frag-loading">Gluing the scraps down…</p>}>
           <NotionContent />
         </Suspense>
-      </div>
-    </main>
-    <Footer />
-    </>
+      </main>
+    </div>
   );
 }
