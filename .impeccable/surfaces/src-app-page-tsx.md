@@ -23,7 +23,7 @@ STORY: The gallery says: four movements, one person, pick a room. Each room carr
 
 FIRST VIEWPORT: Gallery: four full-height canvases side by side on the wall, each a live composition in its movement with its name in its own type; the hovered one widens, performs and plays its theme; a thin chrome strip carries devayu and the sound control. Phones: four stacked bands. Rooms: the hero is the movement's scene only, never the name; "I'm Ayush" starts below it.
 
-FORM: Select screen into four whole rooms, user-pinned structure (the user rejected the one-scroll journey and the roll for this). seed: none (unavailable)
+FORM: Select screen into four whole rooms, a user-pinned structure: the user chose the four movements and the select-screen form in conversation, and a pinned direction beats the roll. The roll was run afterwards for the record only and does not change the build. seed:fde5cbd147a70392
 
 Signature interaction: the rooms' movement-native micro-interactions (Bauhaus rails and hinges, Dada chance and stamps, Pop silkscreen pulls and misregistration, Cubist viewpoint shifts), and covers between rooms made of the destination's material, with the music crossfading on the beat.
 

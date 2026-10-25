@@ -35,12 +35,18 @@ export default function Page() {
 
         <section id="manifest" className="dd-sec dd-manifest" aria-labelledby="manifest-h">
           <div className="dd-spine">
+            <span className="dd-watermark" aria-hidden>
+              Manifest
+            </span>
             <DadaHeading as="h1" id="manifest-h" text="I’m A|yush." loud="Ayush" seed={36} lean={0} />
             <div className="dd-manifesto">
               <p>
                 I&rsquo;m a full stack developer, which means I build <b className="dd-punch">the whole thing</b>: the
                 screen you&rsquo;re poking at, the server behind it, the database behind that, and the boring pipes in
                 between.
+              </p>
+              <p className="dd-decree">
+                I am against nothing <span>except</span> half-built things.
               </p>
               <p>
                 Since October 2022 I&rsquo;ve been a senior software engineer at agilon Health. On the side I freelance and

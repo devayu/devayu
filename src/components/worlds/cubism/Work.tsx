@@ -52,9 +52,9 @@ export default function Work() {
           return (
             <li key={job.id} className="cb-band" style={{ ["--shift" as string]: `${i % 2 ? -6 : 5}px` }}>
               <div className={`cb-pass cb-bp cb-bp-role ${m.role}`} data-refract data-reveal>
-                <p className="cb-when">{job.yearString}</p>
                 <h3 className="cb-role">{job.title}</h3>
                 <p className="cb-where">{job.location}</p>
+                <p className="cb-when">{job.yearString}</p>
               </div>
               <div className={`cb-pass cb-bp cb-bp-text ${m.text}`} data-refract data-reveal>
                 <ul className="cb-did">

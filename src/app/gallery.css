@@ -296,7 +296,7 @@
 }
 .pp-grid {
   position: absolute;
-  inset: 12px 12px 34% 12px;
+  inset: 12px 12px 23% 12px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -338,7 +338,7 @@
 @keyframes pp-squeegee {
   0% { opacity: 1; top: 0; }
   92% { opacity: 1; }
-  100% { opacity: 0; top: 66%; }
+  100% { opacity: 0; top: 77%; }
 }
 .room-pop .room-label {
   color: #111;

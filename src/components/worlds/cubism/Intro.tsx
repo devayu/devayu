@@ -1,4 +1,5 @@
 import { personalInfo } from "@/data/personal";
+import Arrow from "./Arrow";
 
 // Who I am: an oval canvas in a rope frame (the 1912 chair-caning still life),
 // a few analytic planes inside it, and one frontal plane that carries the
@@ -53,10 +54,19 @@ export default function Intro() {
             means React in front and Spring Boot behind, and a habit of walking round a problem a few times before I
             pick the side to cut into.
           </p>
+          <a href="#next" className="cb-front-next" data-refract>
+            <span className="cb-front-next-name">{personalInfo.currentProject.name}</span>
+            <span className="cb-front-next-text">
+              Right now I&rsquo;m building {personalInfo.currentProject.name}, {personalInfo.currentProject.blurb}.
+              It&rsquo;s the side of me that&rsquo;s still moving, so it&rsquo;s where this room is heading.
+            </span>
+            <span className="cb-front-next-go">
+              See what&rsquo;s next <Arrow dir="down" />
+            </span>
+          </a>
           <p>
-            This room shows me the way the Cubists showed a guitar: from several sides at once. Where I&rsquo;ve
-            been, what I use, what I&rsquo;ve made. It all comes back together at the bottom, with what I&rsquo;m
-            building next and how to reach me.
+            Everything between here and there is me the way the Cubists showed a guitar: from several sides at once.
+            Where I&rsquo;ve been, what I use, what I&rsquo;ve made.
           </p>
         </div>
       </div>
@@ -71,7 +81,7 @@ export default function Intro() {
         <li className="cb-scrap cb-paste cb-scrap-flock" data-reveal data-refract style={{ ["--r" as string]: "3deg", ["--i" as string]: 3 }}>
           <a href="#next" className="cb-scrap-link">
             <span className="cb-scrap-word">building {personalInfo.currentProject.name}</span>
-            <span className="cb-scrap-note">what&rsquo;s next, at the bottom <span aria-hidden>↓</span></span>
+            <span className="cb-scrap-note">what&rsquo;s next, at the bottom <Arrow dir="down" /></span>
           </a>
         </li>
       </ul>

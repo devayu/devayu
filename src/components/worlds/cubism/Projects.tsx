@@ -1,4 +1,5 @@
 import { projects } from "@/data/projects";
+import Arrow from "./Arrow";
 import { Disc, type Ring } from "./Disc";
 import Stencil from "./Stencil";
 
@@ -115,14 +116,14 @@ export default function Projects() {
                 </svg>
               </div>
               <article className="cb-fold-text" data-refract>
+                <h3 className="cb-fold-title">{p.title}</h3>
                 <p className="cb-fold-meta">
-                  <span>{p.year}</span>
+                  <span className="cb-fold-year">{p.year}</span>
                   <span className={p.status === "in-progress" ? "cb-status cb-status-live" : "cb-status"}>
                     {STATUS[p.status ?? "completed"]}
                   </span>
                 </p>
-                <h3 className="cb-fold-title">{p.title}</h3>
-                <p className="cb-fold-desc">{p.description}</p>
+                                <p className="cb-fold-desc">{p.description}</p>
                 <ul className="cb-stack cb-rhythm" aria-label="Built with" data-reveal>
                   {p.techStack.map((t, j) => (
                     <li key={t} style={{ ["--b" as string]: beat(j) }}>
@@ -135,7 +136,7 @@ export default function Projects() {
                     <a className="cb-facet" href={p.liveLink} target="_blank" rel="noreferrer">
                       <span className="cb-facet-face">
                         Visit <span className="cb-sr">{p.title}</span>
-                        <span aria-hidden> ↗</span>
+                        <Arrow dir="out" />
                       </span>
                     </a>
                   )}
@@ -143,7 +144,7 @@ export default function Projects() {
                     <a className="cb-facet cb-facet-quiet" href={p.githubLink} target="_blank" rel="noreferrer">
                       <span className="cb-facet-face">
                         Code <span className="cb-sr">for {p.title} on GitHub</span>
-                        <span aria-hidden> ↗</span>
+                        <Arrow dir="out" />
                       </span>
                     </a>
                   )}

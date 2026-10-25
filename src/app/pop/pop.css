@@ -330,6 +330,7 @@ html[data-world="pop"] ::-webkit-scrollbar-thumb {
   line-height: 1.05;
 }
 .pp-jingle-state {
+  white-space: nowrap;
   font-size: 0.95rem;
 }
 .pp-jingle-desc {
@@ -1803,6 +1804,10 @@ html[data-world="pop"] ::-webkit-scrollbar-thumb {
   outline-offset: 6px;
 }
 .pp-buy-note {
+  position: relative;
+  z-index: 2;
+  padding: 4px 10px;
+  background: var(--key);
   margin: 0;
   font-size: 1.0625rem;
   font-weight: 600;
@@ -1824,14 +1829,14 @@ html[data-world="pop"] ::-webkit-scrollbar-thumb {
   translate: var(--nx, 0px) var(--ny, 0px);
 }
 .pp-cloud:nth-child(1) {
-  left: 6%;
+  left: 1%;
 }
 .pp-cloud:nth-child(2) {
-  left: 56%;
-  width: clamp(90px, 11vw, 170px);
+  left: 47%;
+  width: clamp(80px, 8vw, 130px);
 }
 .pp-cloud:nth-child(3) {
-  left: 84%;
+  right: 1%;
 }
 .pp-cloud-svg {
   display: block;
@@ -2067,12 +2072,14 @@ html[data-world="pop"] ::-webkit-scrollbar-thumb {
   .pp-can {
     padding: 0 6%;
   }
+  /* on a phone the sticker rides the can's lid, clear of the brand band and the label */
   .pp-sticker {
-    width: 58px;
+    width: 50px;
     padding: 5px;
-    font-size: 0.56rem;
-    bottom: 1%;
-    right: -5%;
+    font-size: 0.5rem;
+    top: -29%;
+    bottom: auto;
+    right: -10%;
   }
   .pp-backpack {
     display: block;
@@ -2183,5 +2190,27 @@ html[data-world="pop"] ::-webkit-scrollbar-thumb {
   }
   .pp-cloud:nth-child(2) .pp-cloud-svg {
     transform: translateY(-30cqh);
+  }
+}
+
+.pp-soon-label {
+  position: relative;
+  z-index: 2;
+  padding: 8px 0;
+  background: var(--key);
+}
+
+@media (max-width: 680px) {
+  .pp-cloud {
+    width: 84px;
+  }
+  .pp-cloud:nth-child(2) {
+    display: none;
+  }
+  .pp-cloud:nth-child(1) {
+    left: -30px;
+  }
+  .pp-cloud:nth-child(3) {
+    right: -30px;
   }
 }

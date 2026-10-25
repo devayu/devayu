@@ -456,7 +456,7 @@ html[data-world="dada"] ::selection {
   padding: 0.07em 0.1em 0.03em;
   line-height: 1;
   transform: translateY(var(--l)) rotate(var(--t));
-  box-shadow: 1px 2px 0 rgb(26 24 20 / 0.22);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
 }
 .dd-hwrap[data-ransom="armed"] .dd-rl {
   opacity: 0;
@@ -515,7 +515,7 @@ a:focus-visible > .dd-link-hand {
     radial-gradient(ellipse at 18% 12%, rgb(201 178 124 / 0.35), transparent 40%),
     radial-gradient(ellipse at 90% 92%, rgb(201 178 124 / 0.4), transparent 35%),
     var(--paper-p);
-  box-shadow: 0 1px 0 rgb(26 24 20 / 0.2), 10px 12px 0 rgb(26 24 20 / 0.08);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.18), 0 6px 14px -8px rgb(26 24 20 / 0.25);
   cursor: var(--dd-scissor-cursor);
 }
 .dd-poster-slips {
@@ -640,7 +640,7 @@ a:focus-visible > .dd-link-hand {
   padding: 0.6cqi 3cqi 0.4cqi 4cqi;
   background: var(--dd-orange);
   font-size: 3.6cqi;
-  box-shadow: 2px 3px 0 rgb(26 24 20 / 0.15);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
 }
 .dd-p-poem2 {
   --x: 14%;
@@ -721,7 +721,7 @@ a:focus-visible > .dd-link-hand {
   padding: 16px 20px 18px;
   background: var(--dd-paper);
   border: 3px solid var(--dd-ink);
-  box-shadow: inset 0 0 0 4px var(--dd-paper), inset 0 0 0 5.5px var(--dd-ink), 6px 7px 0 rgb(26 24 20 / 0.12);
+  box-shadow: inset 0 0 0 4px var(--dd-paper), inset 0 0 0 5.5px var(--dd-ink), 0 2px 5px rgb(26 24 20 / 0.16);
   transform: rotate(-3deg);
   cursor: auto;
 }
@@ -858,13 +858,57 @@ a:focus-visible > .dd-link-hand {
 }
 .dd-manifesto {
   max-width: 40rem;
-  padding-left: clamp(0px, 2vw, 26px);
-  border-left: 3px solid var(--dd-ink);
+  position: relative;
   font-size: clamp(1.18rem, 1.5vw, 1.34rem);
   line-height: 1.6;
 }
 .dd-manifesto p {
   margin: 0 0 1.05em;
+}
+.dd-manifesto p::first-line {
+  font-variant: small-caps;
+  letter-spacing: 0.03em;
+}
+.dd-manifesto p:nth-of-type(3) {
+  margin-left: clamp(0px, 5vw, 72px);
+}
+.dd-decree {
+  margin: 0.2em 0 1em;
+  padding: 0.35em 0 0.3em;
+  border-top: 4px solid var(--dd-ink);
+  border-bottom: 1px solid var(--dd-ink);
+  font-family: var(--font-holtwood);
+  font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+.dd-decree span {
+  font-family: var(--font-bodoni);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.35em;
+  color: var(--dd-red);
+}
+.dd-spine {
+  position: relative;
+}
+.dd-watermark {
+  position: absolute;
+  left: calc(-1 * clamp(40px, 6vw, 110px));
+  top: 0;
+  font-family: var(--font-holtwood);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--dd-red);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 900px) {
+  .dd-watermark { display: none; }
 }
 .dd-punch {
   font-family: var(--font-archivo-black);
@@ -886,7 +930,7 @@ a:focus-visible > .dd-link-hand {
   margin: 0;
   padding: 12px 16px 20px;
   background: var(--dd-slip);
-  box-shadow: 2px 3px 0 rgb(26 24 20 / 0.12);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
   font-family: var(--font-archivo-black);
   font-size: 1.3rem;
   line-height: 1.02;
@@ -987,7 +1031,7 @@ a:focus-visible > .dd-link-hand {
   margin: 0 clamp(8px, 2.4vw, 36px);
   padding: clamp(40px, 6vw, 84px) clamp(16px, 5vw, 76px) clamp(40px, 6vw, 80px);
   background: var(--dd-sheet);
-  box-shadow: 0 0 0 1px rgb(26 24 20 / 0.08), 8px 10px 0 rgb(26 24 20 / 0.07);
+  box-shadow: 0 0 0 1px rgb(26 24 20 / 0.08), 0 2px 6px rgb(26 24 20 / 0.1);
 }
 .dd-news-head,
 .dd-news-body {
@@ -1163,7 +1207,7 @@ a:focus-visible > .dd-link-hand {
   margin: 0;
   padding: 8px 8px 10px;
   background: var(--dd-slip);
-  box-shadow: 2px 3px 0 rgb(26 24 20 / 0.12);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
   clip-path: polygon(1% 2%, 99% 0, 100% 97%, 0 100%);
   transform: rotate(3deg);
 }
@@ -1217,7 +1261,7 @@ a:focus-visible > .dd-link-hand {
   width: min(100%, 38rem);
   border-collapse: collapse;
   background: var(--dd-slip);
-  box-shadow: 2px 3px 0 rgb(26 24 20 / 0.12);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
   font-family: var(--font-elite);
   font-size: 1rem;
   transform: rotate(-1.5deg);
@@ -1480,7 +1524,7 @@ a:focus-visible > .dd-link-hand {
   position: relative;
   container-type: inline-size;
   padding: 22px 22px 26px;
-  box-shadow: 3px 4px 0 rgb(26 24 20 / 0.16);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
   transform: rotate(var(--tilt));
   transition: transform 240ms steps(3, end), box-shadow 240ms steps(3, end);
 }
@@ -1491,7 +1535,7 @@ a:focus-visible > .dd-link-hand {
 .dd-card:focus-within {
   z-index: 2;
   transform: rotate(0deg) translateY(-8px);
-  box-shadow: 10px 14px 0 rgb(26 24 20 / 0.2);
+  box-shadow: 0 10px 14px -8px rgb(26 24 20 / 0.32), 0 2px 4px rgb(26 24 20 / 0.08);
 }
 .dd-card article {
   display: grid;
@@ -1632,7 +1676,7 @@ a:focus-visible > .dd-link-hand {
   align-self: start;
   padding: 12px 12px 24px;
   background: #fbf8f0;
-  box-shadow: 1px 2px 0 rgb(26 24 20 / 0.14);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
   font-family: var(--font-elite);
   font-size: 0.98rem;
   line-height: 1.5;
@@ -1700,7 +1744,7 @@ a:focus-visible > .dd-link-hand {
   margin: 0 auto;
   padding: clamp(20px, 4vw, 40px);
   background: #e9ddbe;
-  box-shadow: 6px 8px 0 rgb(26 24 20 / 0.1);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
   transform: rotate(-1deg);
 }
 .dd-tg-head {
@@ -1737,7 +1781,7 @@ a:focus-visible > .dd-link-hand {
   margin: 0 0 10px;
   padding: 5px 12px 4px;
   background: #f7f2e6;
-  box-shadow: 0 1px 0 rgb(26 24 20 / 0.14);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.12);
   overflow-wrap: anywhere;
 }
 .dd-tg-body p:nth-child(2) { transform: rotate(0.6deg); }
@@ -1760,10 +1804,11 @@ a:focus-visible > .dd-link-hand {
   margin-top: 24px;
 }
 .dd-send {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 22px 14px 16px;
+  padding: 14px 64px 14px 18px;
   background: var(--dd-ink);
   color: var(--dd-paper) !important;
   font-family: var(--font-archivo-black);
@@ -1771,17 +1816,45 @@ a:focus-visible > .dd-link-hand {
   letter-spacing: 0.04em;
   text-decoration: none !important;
   text-transform: uppercase;
-  box-shadow: 4px 4px 0 var(--dd-red);
+  -webkit-mask:
+    radial-gradient(circle at 0 50%, transparent 4px, #000 4.5px) left / 51% 12px repeat-y,
+    radial-gradient(circle at 100% 50%, transparent 4px, #000 4.5px) right / 51% 12px repeat-y;
+  mask:
+    radial-gradient(circle at 0 50%, transparent 4px, #000 4.5px) left / 51% 12px repeat-y,
+    radial-gradient(circle at 100% 50%, transparent 4px, #000 4.5px) right / 51% 12px repeat-y;
   transform: rotate(-2deg);
-  transition: transform 120ms steps(2, end), box-shadow 120ms steps(2, end);
+  transition: transform 120ms steps(2, end);
+}
+.dd-send::after {
+  content: "ja";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  padding: 0 6px;
+  border: 2.5px solid #ff5a45;
+  color: #ff5a45;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(-50%) rotate(-48deg) scale(1.7);
+  transition: opacity 150ms steps(2, end), transform 180ms steps(3, end);
 }
 .dd-send:hover {
-  transform: rotate(-2deg) translate(-1px, -2px);
-  box-shadow: 6px 6px 0 var(--dd-red);
+  transform: rotate(-1deg) translateY(-2px);
+}
+.dd-send:hover::after,
+.dd-send:focus-visible::after {
+  opacity: 0.95;
+  transform: translateY(-50%) rotate(-12deg) scale(1);
 }
 .dd-send:active {
-  transform: rotate(-2deg) translate(3px, 3px);
-  box-shadow: 1px 1px 0 var(--dd-red);
+  transform: rotate(-1deg) translateY(1px) scale(0.98, 0.95);
+}
+.dd-send:active::after {
+  transform: translateY(-50%) rotate(-12deg) scale(1.06, 0.9);
+}
+.dd-send:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px #ff5a45;
 }
 .dd-send-hand {
   width: 44px;
@@ -1961,20 +2034,21 @@ a:focus-visible > .dd-link-hand {
   .dd-programme-title span:last-child {
     font-size: 1.9rem;
   }
-  .dd-p-dada1 { --x: -2%; --y: 25%; --r: -6deg; font-size: 30cqi; }
-  .dd-p-dada2 { --x: 74%; --y: 15%; --r: 90deg; font-size: 13cqi; }
-  .dd-p-dada3 { --x: 58%; --y: 40.5%; --r: 180deg; font-size: 12cqi; }
-  .dd-p-kleine { --x: 5%; --y: 8.5%; font-size: 11cqi; }
-  .dd-p-full { --x: 6%; --y: 14.5%; font-size: 5.6cqi; }
-  .dd-p-soiree { --x: 38%; --y: 12.5%; font-size: 14cqi; }
-  .dd-p-caps { --x: 5%; --y: 20%; font-size: 6cqi; }
-  .dd-p-abend { --x: 6%; --y: 36%; font-size: 4cqi; }
-  .dd-p-poem1 { --x: 0%; --y: 40%; font-size: 5.6cqi; }
-  .dd-p-poem2 { --x: 20%; --y: 46%; font-size: 5cqi; }
+  /* phones: a quieter bill. Title, one big DADA, one sound strip, the programme. */
+  .dd-p-full,
+  .dd-p-caps,
+  .dd-p-abend,
+  .dd-p-poem2,
   .dd-p-poem3,
+  .dd-p-dada2,
+  .dd-p-dada3,
   .dd-p-hand1,
   .dd-p-hand2 { display: none; }
-  .dd-p-free { --x: 68%; --y: 27%; }
+  .dd-p-kleine { --x: 6%; --y: 9%; --r: -3deg; font-size: 10cqi; }
+  .dd-p-soiree { --x: 9%; --y: 15%; --r: 0deg; font-size: 14cqi; }
+  .dd-p-free { --x: 68%; --y: 12%; }
+  .dd-p-dada1 { --x: 3%; --y: 27%; --r: -5deg; font-size: 23cqi; }
+  .dd-p-poem1 { --x: 0%; --y: 41.5%; --r: -3deg; font-size: 5.6cqi; }
   .dd-postmark { width: 22cqi; font-size: 1.8cqi; }
   .dd-postmark b { font-size: 5cqi; }
   .dd-p-hand { width: 18cqi; }
@@ -2183,7 +2257,7 @@ a:focus-visible > .dd-link-hand {
   outline: 2px solid var(--dd-arp1);
   outline-offset: -26px;
   background: var(--dd-paper);
-  box-shadow: 8px 10px 0 rgb(26 24 20 / 0.12);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
 }
 .dd-404-sig {
   position: absolute;
@@ -2201,7 +2275,7 @@ a:focus-visible > .dd-link-hand {
   padding: 8px 12px;
   background: var(--dd-slip);
   font-size: 1rem;
-  box-shadow: 1px 2px 0 rgb(26 24 20 / 0.12);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
 }
 
 /* ——— Fragments: a Merz board of pasted scraps ——— */
@@ -2226,13 +2300,13 @@ a:focus-visible > .dd-link-hand {
   break-inside: avoid;
   margin: 0 0 clamp(32px, 4vw, 48px);
   padding: 16px 18px 26px;
-  box-shadow: 2px 3px 0 rgb(26 24 20 / 0.14);
+  box-shadow: 0 1px 2px rgb(26 24 20 / 0.16);
   transform: rotate(var(--tilt));
   transition: transform 240ms steps(3, end), box-shadow 240ms steps(3, end);
 }
 .dd-scrap:hover {
   transform: rotate(0deg) translateY(-6px);
-  box-shadow: 8px 12px 0 rgb(26 24 20 / 0.18);
+  box-shadow: 0 10px 14px -8px rgb(26 24 20 / 0.32), 0 2px 4px rgb(26 24 20 / 0.08);
 }
 .dd-scrap--pic {
   padding-bottom: 18px;

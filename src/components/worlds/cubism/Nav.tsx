@@ -1,6 +1,7 @@
 "use client";
 
 import WorldLink from "@/components/gallery/WorldLink";
+import Arrow from "./Arrow";
 import { getWorld, worlds } from "@/data/worlds";
 import { audio } from "@/lib/audio/manager";
 import { useAudio } from "@/lib/audio/use-audio";
@@ -31,7 +32,8 @@ export function NavPlanes() {
         <li>
           <WorldLink href="/" className="cb-np" style={{ ["--shape" as string]: SHAPES[0] }}>
             <span className="cb-np-face">
-              <span aria-hidden>← </span>Gallery
+              <Arrow dir="left" />
+              Gallery
             </span>
           </WorldLink>
         </li>
@@ -45,7 +47,7 @@ export function NavPlanes() {
       </ul>
       <a href="#reach" className="cb-np cb-np-reach" style={{ ["--shape" as string]: SHAPES[4] }}>
         <span className="cb-np-face">
-          Reach me <span aria-hidden>↓</span>
+          Reach me <Arrow dir="down" />
         </span>
       </a>
     </nav>

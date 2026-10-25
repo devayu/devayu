@@ -1567,8 +1567,12 @@ html[data-world="bauhaus"]::-webkit-scrollbar-thumb {
   }
   .bh-axis {
     --tilt-base: -30deg;
-    left: 46%;
-    top: 52%;
+    left: 50%;
+    top: 60%;
+  }
+  /* the long slogan would run off the left edge on a phone's steep axis */
+  .bh-p-type-s {
+    display: none;
   }
   .bh-p-type {
     font-size: calc(3.4 * var(--u));
@@ -1576,9 +1580,12 @@ html[data-world="bauhaus"]::-webkit-scrollbar-thumb {
   .bh-p-type-s {
     font-size: calc(2.2 * var(--u));
   }
+  /* on a phone the façade stands top-left, clear of the rising arm */
   .bh-dessau {
-    top: 22px;
-    right: 14px;
+    top: 18px;
+    left: 14px;
+    right: auto;
+    padding: 0;
   }
   .bh-gauge {
     display: none;

@@ -1,6 +1,7 @@
 "use client";
 
 import { audio } from "@/lib/audio/manager";
+import Arrow from "./Arrow";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 // The still life, taken apart. Each plane holds the object from two sides (the
@@ -210,6 +211,14 @@ export default function Hero() {
         </span>
         <span className="cb-frag cb-frag-date" style={{ zIndex: 9 }}>OCT. 22</span>
       </div>
+      <a href="#next" className="cb-frag-next" aria-label="Beacon, what I'm building next">
+        <span aria-hidden className="cb-frag-next-word">
+          BEAC<span className="cb-frag-next-rest">ON</span>
+        </span>
+        <span aria-hidden className="cb-frag-next-sub">
+          next <Arrow dir="down" />
+        </span>
+      </a>
       <p className="cb-hero-hint">
         <span className="cb-hint-fine">Move across the table. It stays flat; you walk round it.</span>
         <span className="cb-hint-touch">Drag across the table. It stays flat; you walk round it.</span>

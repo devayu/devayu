@@ -1,0 +1,1169 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T08:26:30+00:00",
+  "title": "Design System: devayu",
+  "extensions": {
+    "colorMeta": {
+      "gallery-wall": {
+        "role": "neutral",
+        "displayName": "Night Wall",
+        "canonical": "#0f0e0d",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#272625",
+          "#464543",
+          "#676664",
+          "#8a8987",
+          "#afaeac",
+          "#d2d1d0",
+          "#efeeee"
+        ]
+      },
+      "gallery-ink": {
+        "role": "neutral",
+        "displayName": "Gallery Bone",
+        "canonical": "#efe9dc",
+        "tonalRamp": [
+          "#0c0b08",
+          "#29261f",
+          "#49453a",
+          "#6b665a",
+          "#8e897d",
+          "#b2ada2",
+          "#d4d1c9",
+          "#f0eee9"
+        ]
+      },
+      "gallery-dim": {
+        "role": "neutral",
+        "displayName": "Gallery Dim",
+        "canonical": "#a39c8f",
+        "tonalRamp": [
+          "#0d0b08",
+          "#2a261f",
+          "#4a4439",
+          "#6c6559",
+          "#8f887c",
+          "#b3ada1",
+          "#d5d0c8",
+          "#f1eee9"
+        ]
+      },
+      "bauhaus-paper": {
+        "role": "neutral",
+        "displayName": "Bauhaus Paper",
+        "canonical": "#ede7d9",
+        "tonalRamp": [
+          "#0c0b08",
+          "#29261f",
+          "#494539",
+          "#6b6659",
+          "#8e897c",
+          "#b3ada2",
+          "#d4d1c8",
+          "#f0eee9"
+        ]
+      },
+      "bauhaus-buff": {
+        "role": "neutral",
+        "displayName": "Bauhaus Buff",
+        "canonical": "#e4dcc8",
+        "tonalRamp": [
+          "#0d0b06",
+          "#2a261c",
+          "#4b4434",
+          "#6d6654",
+          "#908976",
+          "#b4ad9c",
+          "#d5d1c5",
+          "#f1eee7"
+        ]
+      },
+      "bauhaus-card": {
+        "role": "neutral",
+        "displayName": "Book-Spine Card",
+        "canonical": "#d9d6cf",
+        "tonalRamp": [
+          "#0c0b09",
+          "#282623",
+          "#47453f",
+          "#686660",
+          "#8c8982",
+          "#b0aea8",
+          "#d3d1cc",
+          "#efeeec"
+        ]
+      },
+      "bauhaus-ink": {
+        "role": "neutral",
+        "displayName": "Bauhaus Ink",
+        "canonical": "#161514",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#272625",
+          "#464544",
+          "#676664",
+          "#8a8987",
+          "#afaeac",
+          "#d2d1d0",
+          "#efeeee"
+        ]
+      },
+      "bauhaus-grey": {
+        "role": "neutral",
+        "displayName": "Construction Grey",
+        "canonical": "#8a8781",
+        "tonalRamp": [
+          "#0c0b09",
+          "#282623",
+          "#47453f",
+          "#696660",
+          "#8c8983",
+          "#b0aea8",
+          "#d3d1cd",
+          "#efeeec"
+        ]
+      },
+      "bauhaus-vermilion": {
+        "role": "primary",
+        "displayName": "Bauhaus Vermilion",
+        "canonical": "#d0331f",
+        "tonalRamp": [
+          "#220000",
+          "#570000",
+          "#920000",
+          "#bd1a04",
+          "#e84b36",
+          "#ff7d66",
+          "#ffb3a1",
+          "#ffddd0"
+        ]
+      },
+      "bauhaus-yellow": {
+        "role": "secondary",
+        "displayName": "Stage Yellow",
+        "canonical": "#f0b419",
+        "tonalRamp": [
+          "#170700",
+          "#3f1d00",
+          "#6c3600",
+          "#915900",
+          "#b77d00",
+          "#d9a528",
+          "#f0cc85",
+          "#ffecc0"
+        ]
+      },
+      "bauhaus-ultramarine": {
+        "role": "secondary",
+        "displayName": "Stage Ultramarine",
+        "canonical": "#1e3c8c",
+        "tonalRamp": [
+          "#030921",
+          "#0f2254",
+          "#203e8d",
+          "#3e61b4",
+          "#6085dc",
+          "#88acfc",
+          "#b6d1ff",
+          "#ddefff"
+        ]
+      },
+      "bauhaus-green": {
+        "role": "secondary",
+        "displayName": "Kit Green",
+        "canonical": "#2e7d4f",
+        "tonalRamp": [
+          "#001004",
+          "#003015",
+          "#00552a",
+          "#28774a",
+          "#4f9c6c",
+          "#7cc093",
+          "#b0debe",
+          "#daf7e3"
+        ]
+      },
+      "bauhaus-pink": {
+        "role": "secondary",
+        "displayName": "Ballet Pink",
+        "canonical": "#e7a9b4",
+        "tonalRamp": [
+          "#150609",
+          "#3b1b22",
+          "#66333e",
+          "#8a545f",
+          "#b07681",
+          "#d39da7",
+          "#edc5cc",
+          "#ffe7eb"
+        ]
+      },
+      "dada-newsprint": {
+        "role": "neutral",
+        "displayName": "Newsprint",
+        "canonical": "#ede6d3",
+        "tonalRamp": [
+          "#0d0b07",
+          "#2a261c",
+          "#4a4535",
+          "#6c6655",
+          "#8f8977",
+          "#b4ae9e",
+          "#d5d1c5",
+          "#f1eee7"
+        ]
+      },
+      "dada-aged": {
+        "role": "neutral",
+        "displayName": "Aged Stock",
+        "canonical": "#e3d3a8",
+        "tonalRamp": [
+          "#0f0b02",
+          "#2e250d",
+          "#51441d",
+          "#73653d",
+          "#97885f",
+          "#bbad88",
+          "#dad0b7",
+          "#f4eede"
+        ]
+      },
+      "dada-sheet": {
+        "role": "neutral",
+        "displayName": "Broadsheet",
+        "canonical": "#f1ebdb",
+        "tonalRamp": [
+          "#0d0b07",
+          "#29261e",
+          "#4a4538",
+          "#6b6658",
+          "#8e897a",
+          "#b3aea0",
+          "#d4d1c7",
+          "#f1eee8"
+        ]
+      },
+      "dada-slip": {
+        "role": "neutral",
+        "displayName": "Paper Slip",
+        "canonical": "#f6f1e4",
+        "tonalRamp": [
+          "#0c0b08",
+          "#292620",
+          "#49453a",
+          "#6a665b",
+          "#8d897d",
+          "#b2aea3",
+          "#d4d1c9",
+          "#f0eee9"
+        ]
+      },
+      "dada-ink": {
+        "role": "neutral",
+        "displayName": "Letterpress Black",
+        "canonical": "#1a1814",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#282623",
+          "#474540",
+          "#686661",
+          "#8b8984",
+          "#b0aea9",
+          "#d2d1cd",
+          "#efeeec"
+        ]
+      },
+      "dada-soft-ink": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "#4a453c",
+        "tonalRamp": [
+          "#0c0b08",
+          "#292620",
+          "#49443b",
+          "#6b655c",
+          "#8e887e",
+          "#b2ada4",
+          "#d4d0ca",
+          "#f0eeea"
+        ]
+      },
+      "dada-vermilion": {
+        "role": "primary",
+        "displayName": "Dada Vermilion",
+        "canonical": "#d22b1f",
+        "tonalRamp": [
+          "#230000",
+          "#580000",
+          "#940000",
+          "#bf0d06",
+          "#eb4636",
+          "#ff7a67",
+          "#ffb1a1",
+          "#ffdcd0"
+        ]
+      },
+      "dada-oxblood": {
+        "role": "neutral",
+        "displayName": "Oxblood",
+        "canonical": "#9e1b14",
+        "tonalRamp": [
+          "#1f0000",
+          "#510000",
+          "#880000",
+          "#b23127",
+          "#dc594a",
+          "#fe8676",
+          "#ffb8ab",
+          "#ffdfd6"
+        ]
+      },
+      "dada-green": {
+        "role": "secondary",
+        "displayName": "Ticket Green",
+        "canonical": "#5e7f5a",
+        "tonalRamp": [
+          "#050e05",
+          "#192c17",
+          "#2f4e2c",
+          "#50704c",
+          "#72946e",
+          "#99b895",
+          "#c2d8bf",
+          "#e5f3e3"
+        ]
+      },
+      "dada-green-pale": {
+        "role": "secondary",
+        "displayName": "Pale Ticket Green",
+        "canonical": "#b5c2a6",
+        "tonalRamp": [
+          "#090c06",
+          "#22291a",
+          "#3f4932",
+          "#5f6b52",
+          "#828e74",
+          "#a7b39a",
+          "#ccd4c3",
+          "#ebf1e6"
+        ]
+      },
+      "dada-orange": {
+        "role": "secondary",
+        "displayName": "Ticket Orange",
+        "canonical": "#e07a2e",
+        "tonalRamp": [
+          "#1c0300",
+          "#4a0e00",
+          "#7e1f00",
+          "#a64500",
+          "#ce6a16",
+          "#f09456",
+          "#ffc098",
+          "#ffe5cb"
+        ]
+      },
+      "dada-orange-pale": {
+        "role": "secondary",
+        "displayName": "Pale Ticket Orange",
+        "canonical": "#ebc39b",
+        "tonalRamp": [
+          "#130902",
+          "#36210a",
+          "#5e3d17",
+          "#815e39",
+          "#a6815b",
+          "#c9a784",
+          "#e5ccb4",
+          "#fbebdc"
+        ]
+      },
+      "dada-violet": {
+        "role": "secondary",
+        "displayName": "Stamp Violet",
+        "canonical": "#3b4a8c",
+        "tonalRamp": [
+          "#06091d",
+          "#1a224b",
+          "#313e7f",
+          "#5061a5",
+          "#7184cc",
+          "#97abed",
+          "#c1cffe",
+          "#e4eeff"
+        ]
+      },
+      "pop-paper": {
+        "role": "neutral",
+        "displayName": "Unprinted Stock",
+        "canonical": "#f4eedc",
+        "tonalRamp": [
+          "#0d0b07",
+          "#29261d",
+          "#4a4536",
+          "#6b6656",
+          "#8e8979",
+          "#b3ae9f",
+          "#d4d1c6",
+          "#f1eee8"
+        ]
+      },
+      "pop-key": {
+        "role": "neutral",
+        "displayName": "Black Key",
+        "canonical": "#111111",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#aeaeae",
+          "#d1d1d1",
+          "#eeeeee"
+        ]
+      },
+      "pop-red": {
+        "role": "primary",
+        "displayName": "Pop Red",
+        "canonical": "#e2231a",
+        "tonalRamp": [
+          "#250000",
+          "#5c0000",
+          "#9a0000",
+          "#c60000",
+          "#f2382c",
+          "#ff7260",
+          "#ffad9d",
+          "#ffdace"
+        ]
+      },
+      "pop-yellow": {
+        "role": "secondary",
+        "displayName": "Process Yellow",
+        "canonical": "#ffd400",
+        "tonalRamp": [
+          "#150800",
+          "#3a2100",
+          "#653c00",
+          "#885f00",
+          "#ad8300",
+          "#d0aa00",
+          "#e9d079",
+          "#fdefba"
+        ]
+      },
+      "pop-blue": {
+        "role": "secondary",
+        "displayName": "Pop Blue",
+        "canonical": "#0070c0",
+        "tonalRamp": [
+          "#000b22",
+          "#002656",
+          "#004490",
+          "#0068b7",
+          "#318ddf",
+          "#66b3ff",
+          "#a3d6ff",
+          "#d2f2ff"
+        ]
+      },
+      "pop-cyan": {
+        "role": "secondary",
+        "displayName": "Pop Cyan",
+        "canonical": "#2eb4e6",
+        "tonalRamp": [
+          "#000e1c",
+          "#002c49",
+          "#004e7b",
+          "#0072a1",
+          "#0097c7",
+          "#51bce8",
+          "#99dcfb",
+          "#cdf6ff"
+        ]
+      },
+      "pop-pink": {
+        "role": "secondary",
+        "displayName": "Day-Glo Pink",
+        "canonical": "#ff5fa2",
+        "tonalRamp": [
+          "#21000b",
+          "#540027",
+          "#8d0045",
+          "#b70b66",
+          "#e24389",
+          "#ff76ae",
+          "#ffaed1",
+          "#ffdaee"
+        ]
+      },
+      "pop-turquoise": {
+        "role": "secondary",
+        "displayName": "Turquoise Screen",
+        "canonical": "#1fc3b5",
+        "tonalRamp": [
+          "#00110e",
+          "#00332c",
+          "#00584e",
+          "#007c70",
+          "#00a194",
+          "#47c5b8",
+          "#96e2d8",
+          "#ccfaf3"
+        ]
+      },
+      "pop-orange": {
+        "role": "secondary",
+        "displayName": "Pop Orange",
+        "canonical": "#ff6a13",
+        "tonalRamp": [
+          "#220000",
+          "#560000",
+          "#900000",
+          "#bb2500",
+          "#e55200",
+          "#ff8244",
+          "#ffb68f",
+          "#ffdfc6"
+        ]
+      },
+      "pop-lime": {
+        "role": "secondary",
+        "displayName": "Pop Lime",
+        "canonical": "#a6d608",
+        "tonalRamp": [
+          "#050f00",
+          "#182f00",
+          "#2f5200",
+          "#4e7600",
+          "#6f9b00",
+          "#96c01e",
+          "#bfdf83",
+          "#e3f8c0"
+        ]
+      },
+      "cubism-ground": {
+        "role": "neutral",
+        "displayName": "Canvas Ground",
+        "canonical": "#e8dcc4",
+        "tonalRamp": [
+          "#0e0b05",
+          "#2c2619",
+          "#4e4430",
+          "#6f6550",
+          "#938872",
+          "#b7ad98",
+          "#d7d0c2",
+          "#f3eee5"
+        ]
+      },
+      "cubism-sienna": {
+        "role": "secondary",
+        "displayName": "Raw Sienna",
+        "canonical": "#b8894a",
+        "tonalRamp": [
+          "#150800",
+          "#3a2000",
+          "#643a00",
+          "#885c17",
+          "#ae7f40",
+          "#d0a56e",
+          "#eacba6",
+          "#ffebd4"
+        ]
+      },
+      "cubism-ochre": {
+        "role": "primary",
+        "displayName": "Analytic Ochre",
+        "canonical": "#c9a15f",
+        "tonalRamp": [
+          "#130900",
+          "#372100",
+          "#603d00",
+          "#845e17",
+          "#a98240",
+          "#cca86e",
+          "#e6cda6",
+          "#fcecd3"
+        ]
+      },
+      "cubism-umber": {
+        "role": "secondary",
+        "displayName": "Burnt Umber",
+        "canonical": "#5c4128",
+        "tonalRamp": [
+          "#110904",
+          "#332213",
+          "#593f26",
+          "#7c6046",
+          "#a18368",
+          "#c4a88f",
+          "#e1cdbc",
+          "#f9ece1"
+        ]
+      },
+      "cubism-grey": {
+        "role": "secondary",
+        "displayName": "Studio Grey",
+        "canonical": "#8e8577",
+        "tonalRamp": [
+          "#0d0b07",
+          "#2b261e",
+          "#4c4437",
+          "#6d6557",
+          "#91887a",
+          "#b5ada0",
+          "#d6d0c7",
+          "#f2eee8"
+        ]
+      },
+      "cubism-gris": {
+        "role": "secondary",
+        "displayName": "Gris Blue-Grey",
+        "canonical": "#6e7f8c",
+        "tonalRamp": [
+          "#070c0f",
+          "#1e282f",
+          "#384753",
+          "#586975",
+          "#7a8c99",
+          "#a0b0bd",
+          "#c7d3db",
+          "#e8f0f5"
+        ]
+      },
+      "cubism-charcoal": {
+        "role": "neutral",
+        "displayName": "Charcoal Edge",
+        "canonical": "#2a2622",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#292623",
+          "#484440",
+          "#6a6560",
+          "#8d8883",
+          "#b2ada8",
+          "#d4d0cd",
+          "#f0eeec"
+        ]
+      },
+      "cubism-chalk": {
+        "role": "neutral",
+        "displayName": "Chalk Plane",
+        "canonical": "#f3eee2",
+        "tonalRamp": [
+          "#0c0b08",
+          "#292620",
+          "#49453b",
+          "#6a665b",
+          "#8d897e",
+          "#b2aea3",
+          "#d4d1ca",
+          "#f0eeea"
+        ]
+      },
+      "cubism-ink": {
+        "role": "neutral",
+        "displayName": "Cubism Ink",
+        "canonical": "#1f1d1a",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#282624",
+          "#474541",
+          "#686662",
+          "#8b8985",
+          "#b0adaa",
+          "#d2d1ce",
+          "#efeeed"
+        ]
+      },
+      "cubism-news": {
+        "role": "neutral",
+        "displayName": "Pasted Newspaper",
+        "canonical": "#ede6d3",
+        "tonalRamp": [
+          "#0d0b07",
+          "#2a261c",
+          "#4a4535",
+          "#6c6655",
+          "#8f8977",
+          "#b4ae9e",
+          "#d5d1c5",
+          "#f1eee7"
+        ]
+      },
+      "cubism-paper-green": {
+        "role": "neutral",
+        "displayName": "Flock Green",
+        "canonical": "#7a8f6a",
+        "tonalRamp": [
+          "#080d04",
+          "#1f2b15",
+          "#394c2a",
+          "#5a6d4a",
+          "#7c916c",
+          "#a2b593",
+          "#c8d6be",
+          "#e9f2e3"
+        ]
+      },
+      "cubism-red": {
+        "role": "tertiary",
+        "displayName": "Synthetic Red",
+        "canonical": "#c8372d",
+        "tonalRamp": [
+          "#210000",
+          "#540000",
+          "#8e0000",
+          "#b8251e",
+          "#e35144",
+          "#ff8071",
+          "#ffb5a7",
+          "#ffded4"
+        ]
+      },
+      "cubism-cobalt": {
+        "role": "tertiary",
+        "displayName": "Synthetic Cobalt",
+        "canonical": "#2f4fa2",
+        "tonalRamp": [
+          "#030921",
+          "#0f2154",
+          "#203d8e",
+          "#3e61b5",
+          "#6085dd",
+          "#88acfd",
+          "#b6d1ff",
+          "#ddefff"
+        ]
+      },
+      "cubism-yellow": {
+        "role": "tertiary",
+        "displayName": "Synthetic Yellow",
+        "canonical": "#e5b42a",
+        "tonalRamp": [
+          "#150800",
+          "#3c2000",
+          "#673a00",
+          "#8b5d00",
+          "#b08100",
+          "#d2a836",
+          "#ebce89",
+          "#ffedc3"
+        ]
+      },
+      "cubism-orange": {
+        "role": "tertiary",
+        "displayName": "Orphic Orange",
+        "canonical": "#e07b39",
+        "tonalRamp": [
+          "#1c0300",
+          "#4a0f00",
+          "#7d2000",
+          "#a54500",
+          "#cd6a25",
+          "#f0945c",
+          "#ffc09b",
+          "#ffe5cd"
+        ]
+      },
+      "cubism-violet": {
+        "role": "tertiary",
+        "displayName": "Orphic Violet",
+        "canonical": "#6b4c9a",
+        "tonalRamp": [
+          "#0f061c",
+          "#2e1a49",
+          "#50317c",
+          "#7253a2",
+          "#9576c8",
+          "#b99ee9",
+          "#d8c6fc",
+          "#f3e8ff"
+        ]
+      },
+      "cubism-emerald": {
+        "role": "tertiary",
+        "displayName": "Orphic Emerald",
+        "canonical": "#3e8e6b",
+        "tonalRamp": [
+          "#001007",
+          "#00301c",
+          "#005435",
+          "#237755",
+          "#4c9b78",
+          "#7abf9e",
+          "#afdec6",
+          "#daf7e7"
+        ]
+      },
+      "cubism-sky": {
+        "role": "tertiary",
+        "displayName": "Orphic Sky",
+        "canonical": "#7fb3d5",
+        "tonalRamp": [
+          "#010d16",
+          "#092a3c",
+          "#164a67",
+          "#3a6c8b",
+          "#5d90b1",
+          "#87b5d3",
+          "#b6d6eb",
+          "#def2ff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "gallery-display": {
+        "displayName": "Gallery Display",
+        "purpose": "Gallery gate title (first-visit sound question)."
+      },
+      "gallery-label": {
+        "displayName": "Gallery Label",
+        "purpose": "All gallery chrome: handle, sound control, foot line, Fragments link."
+      },
+      "bauhaus-display": {
+        "displayName": "Bauhaus Display",
+        "purpose": "The stacked name block in 'who i am'; lowercase."
+      },
+      "bauhaus-headline": {
+        "displayName": "Bauhaus Headline",
+        "purpose": "Bauhaus section heads, each hanging from a top bar."
+      },
+      "bauhaus-body": {
+        "displayName": "Bauhaus Body",
+        "purpose": "Bauhaus text, lowercase; ledes at 44ch."
+      },
+      "bauhaus-label": {
+        "displayName": "Bauhaus Label",
+        "purpose": "Rail labels (vertical) and numerals."
+      },
+      "dada-headline": {
+        "displayName": "Dada Headline",
+        "purpose": "Dada section heads, cut word by word from mixed printings with a red second printing."
+      },
+      "dada-body": {
+        "displayName": "Dada Body",
+        "purpose": "Dada text in a newsprint roman."
+      },
+      "dada-label": {
+        "displayName": "Dada Label",
+        "purpose": "Typewriter labels on tickets, hats and captions."
+      },
+      "pop-display": {
+        "displayName": "Pop Display",
+        "purpose": "Fat Clarendon logotypes and the intro name."
+      },
+      "pop-headline": {
+        "displayName": "Pop Headline",
+        "purpose": "Printed section heads: red ink screen under an off-register black key."
+      },
+      "pop-body": {
+        "displayName": "Pop Body",
+        "purpose": "Back-of-pack text."
+      },
+      "pop-label": {
+        "displayName": "Pop Label",
+        "purpose": "Price tags, stickers and packaging labels, uppercase."
+      },
+      "cubism-display": {
+        "displayName": "Cubism Display",
+        "purpose": "Sprayed stencil words (the next word, the poster)."
+      },
+      "cubism-headline": {
+        "displayName": "Cubism Headline",
+        "purpose": "Cubism section heads in a serif stencil, mixed case."
+      },
+      "cubism-body": {
+        "displayName": "Cubism Body",
+        "purpose": "Newspaper-roman text; italic ledes at 54ch."
+      },
+      "cubism-label": {
+        "displayName": "Cubism Label",
+        "purpose": "Facet buttons and nav planes, stencil caps at 0.16em."
+      }
+    },
+    "shadows": [
+      {
+        "name": "gallery-wall-hang",
+        "value": "0 34px 60px -34px rgb(0 0 0 / 0.9)",
+        "purpose": "Gallery canvases hanging on the night wall."
+      },
+      {
+        "name": "gallery-sound-pulse",
+        "value": "0 0 0 7px rgb(239 233 220 / 0)",
+        "purpose": "Sound dot pulse ring, two beats at 104 bpm (1154ms)."
+      },
+      {
+        "name": "dada-paper-rest",
+        "value": "0 1px 2px rgb(26 24 20 / 0.16)",
+        "purpose": "Dada scraps, slips and ransom letters at rest."
+      },
+      {
+        "name": "dada-paper-lifted",
+        "value": "0 10px 14px -8px rgb(26 24 20 / 0.32), 0 2px 4px rgb(26 24 20 / 0.08)",
+        "purpose": "A Dada scrap picked up on hover (240ms steps(3, end))."
+      },
+      {
+        "name": "dada-stamp-ring",
+        "value": "inset 0 0 0 3px var(--dd-red)",
+        "purpose": "Rubber-stamp frame on active tickets and stamps."
+      },
+      {
+        "name": "pop-key",
+        "value": "4px 3px 0 var(--key)",
+        "purpose": "Pop's black key off-register; hover 8px 6px, press 0 0. Pop only."
+      },
+      {
+        "name": "pop-heading-key",
+        "value": "translate(var(--kx0), var(--ky0)) on a ::before key layer (4px, 3px)",
+        "purpose": "Printed Pop headings."
+      }
+    ],
+    "motion": [
+      {
+        "name": "gallery-hang",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Gallery canvas widening (760ms), hang-in (900ms, 70ms stagger), gate entry."
+      },
+      {
+        "name": "gallery-cover-panel",
+        "value": "cubic-bezier(0.7, 0, 0.3, 1)",
+        "purpose": "Wall panels covering the way back to the gallery (440ms, 40ms stagger)."
+      },
+      {
+        "name": "bauhaus-cam",
+        "value": "cubic-bezier(0.2, 0.9, 0.1, 1)",
+        "purpose": "Bauhaus: quick out of the notch, hard stop, no overshoot (link bars 180ms, shape morphs 200ms)."
+      },
+      {
+        "name": "bauhaus-cam-io",
+        "value": "cubic-bezier(0.7, 0, 0.2, 1)",
+        "purpose": "Bauhaus parts travelling along rails."
+      },
+      {
+        "name": "dada-chance",
+        "value": "steps(2, end) / steps(3, end)",
+        "purpose": "Dada stepped, cut-paper motion (150–240ms); ransom letters 140ms, 85ms apart."
+      },
+      {
+        "name": "pop-mechanical",
+        "value": "steps(2, jump-none) 90ms",
+        "purpose": "Pop register jumps and button presses."
+      },
+      {
+        "name": "pop-pull",
+        "value": "cubic-bezier(0.55, 0, 0.35, 1)",
+        "purpose": "Pop silkscreen pulls: ink 440ms, key 120ms later, squeegee 560ms."
+      },
+      {
+        "name": "cubism-ease",
+        "value": "cubic-bezier(0.2, 0.7, 0.2, 1)",
+        "purpose": "Cubism plane shifts, passage feathering (300ms), stencil spray (380ms, 30ms apart)."
+      },
+      {
+        "name": "cubism-light-step",
+        "value": "steps(1, end) 150ms",
+        "purpose": "Cubism facet light changing sides."
+      },
+      {
+        "name": "transport",
+        "value": "104 bpm",
+        "purpose": "Shared music tempo; covers and crossfades land on the beat."
+      },
+      {
+        "name": "covers",
+        "value": "bauhaus 680/620ms, dada 620/700ms, pop 760/300ms, cubism 440/680ms, gallery 560/620ms (cover/reveal)",
+        "purpose": "Destination-material covers between rooms; skipped under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "gallery-bands",
+        "value": "767px"
+      },
+      {
+        "name": "bauhaus-phone",
+        "value": "760px"
+      },
+      {
+        "name": "dada-tablet",
+        "value": "900px"
+      },
+      {
+        "name": "dada-phone",
+        "value": "720px"
+      },
+      {
+        "name": "pop-tablet",
+        "value": "1100px"
+      },
+      {
+        "name": "pop-phone",
+        "value": "680px"
+      },
+      {
+        "name": "cubism-tablet",
+        "value": "900px"
+      },
+      {
+        "name": "cubism-phone",
+        "value": "720px"
+      },
+      {
+        "name": "cubism-wide",
+        "value": "1200px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Gallery Canvas",
+      "kind": "card",
+      "description": "A lit canvas on the night wall; widens and performs its movement on hover or focus.",
+      "html": "<div class=\"ds-wall\"><a class=\"ds-room\" href=\"#\"><span class=\"ds-room-art\"></span><span class=\"ds-room-label\"><span class=\"ds-room-name\">bauhaus</span><span class=\"ds-room-years\">1919–1933</span></span></a><a class=\"ds-room ds-room-b\" href=\"#\"><span class=\"ds-room-art\"></span></a></div>",
+      "css": ".ds-wall{display:flex;gap:10px;height:280px;padding:16px;background:#0f0e0d}.ds-room{position:relative;flex:1 1 0;overflow:hidden;background:#ede7d9;color:#161514;text-decoration:none;box-shadow:0 34px 60px -34px rgb(0 0 0/.9);transition:flex-grow 760ms cubic-bezier(.16,1,.3,1),filter 500ms ease-out}.ds-room::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 60% at 50% -10%,rgb(255 250 235/.14),transparent 60%)}.ds-room-art{position:absolute;left:22px;top:0;bottom:0;width:14px;background:#d0331f}.ds-room-b{background:#e8dcc4}.ds-room-b .ds-room-art{background:#c9a15f;left:30%;width:40%;top:20%;bottom:30%}.ds-room-label{position:absolute;left:36px;bottom:0;display:grid;gap:6px;padding:20px 22px 22px}.ds-room-name{font-family:Archivo,sans-serif;font-stretch:125%;font-weight:700;font-size:2.4rem;line-height:.9;letter-spacing:-.03em}.ds-room-years{font-family:Jost,sans-serif;font-weight:500;font-size:.875rem}.ds-wall:hover .ds-room{flex-grow:.75}.ds-wall .ds-room:hover{flex-grow:2.3;filter:none}.ds-wall:hover .ds-room:not(:hover){filter:saturate(.6) brightness(.62)}.ds-room:focus-visible{outline:2px solid #efe9dc;outline-offset:4px}"
+    },
+    {
+      "name": "Gallery Gate Button",
+      "kind": "button",
+      "refersTo": "gallery-gate-primary",
+      "description": "The first-visit choice to enter with sound; Bone slab on the wall.",
+      "html": "<div class=\"ds-gate\"><button class=\"ds-gate-btn\">Come in with sound</button><button class=\"ds-gate-quiet\">Come in quietly</button></div>",
+      "css": ".ds-gate{display:flex;gap:12px 28px;align-items:center;padding:24px;background:#0f0e0d}.ds-gate-btn{min-height:52px;padding:0 26px;border:0;background:#efe9dc;color:#0f0e0d;font-family:Archivo,sans-serif;font-weight:650;font-stretch:112%;font-size:1rem;cursor:pointer;transition:transform 160ms cubic-bezier(.16,1,.3,1)}.ds-gate-btn:hover{transform:translateY(-2px)}.ds-gate-btn:active{transform:translateY(1px)}.ds-gate-btn:focus-visible,.ds-gate-quiet:focus-visible{outline:2px solid #efe9dc;outline-offset:3px}.ds-gate-quiet{min-height:44px;border:0;background:none;color:#efe9dc;font-family:Archivo,sans-serif;text-decoration:underline;text-underline-offset:5px;cursor:pointer}"
+    },
+    {
+      "name": "Bauhaus Bar Link",
+      "kind": "button",
+      "refersTo": "bauhaus-link-bar",
+      "description": "Bayer's bar: a vermilion bar runs out under the link from the left and retracts to the right.",
+      "html": "<p class=\"ds-bh\">write to me or <a class=\"ds-bh-ln\" href=\"#\">book a call</a>.</p>",
+      "css": ".ds-bh{padding:24px;background:#ede7d9;color:#161514;font-family:'Work Sans',sans-serif;font-size:1.25rem;text-transform:lowercase}.ds-bh-ln{position:relative;z-index:0;color:inherit;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.2em}.ds-bh-ln::before{content:'';position:absolute;z-index:-1;left:-.12em;right:-.12em;bottom:.02em;height:.46em;background:#d0331f;transform:scaleX(0);transform-origin:right;transition:transform 180ms cubic-bezier(.2,.9,.1,1)}.ds-bh-ln:hover::before,.ds-bh-ln:focus-visible::before{transform:scaleX(1);transform-origin:left}.ds-bh-ln:hover{text-decoration-color:transparent}.ds-bh-ln:active::before{background:#161514}.ds-bh-ln:focus-visible{outline:3px solid #d0331f;outline-offset:3px}"
+    },
+    {
+      "name": "Bauhaus Rail",
+      "kind": "nav",
+      "refersTo": "bauhaus-rail",
+      "description": "The fixed ink rail: vertical lowercase labels, a vermilion stripe on hover.",
+      "html": "<nav class=\"ds-rail\"><a href=\"#\" class=\"ds-rail-i\"><span class=\"ds-rail-mk ds-c\"></span><span class=\"ds-vt\">dada</span></a><a href=\"#\" class=\"ds-rail-i\"><span class=\"ds-rail-mk ds-t\"></span><span class=\"ds-vt\">pop art</span></a><a href=\"#\" class=\"ds-rail-i\"><span class=\"ds-rail-mk\"></span><span class=\"ds-vt\">cubism</span></a></nav>",
+      "css": ".ds-rail{display:flex;flex-direction:column;align-items:center;gap:12px;width:84px;padding:14px 0 18px;background:#161514;color:#ede7d9;font-family:Jost,sans-serif}.ds-rail-i{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;padding:8px 0;color:#ede7d9;text-decoration:none}.ds-rail-i::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:#d0331f;transform:scaleY(0);transform-origin:top;transition:transform 180ms cubic-bezier(.2,.9,.1,1)}.ds-rail-i:hover::before,.ds-rail-i:focus-visible::before{transform:scaleY(1)}.ds-rail-i:focus-visible{outline:3px solid #d0331f;outline-offset:3px}.ds-rail-mk{width:24px;height:24px;background:#ede7d9}.ds-rail-mk.ds-c{border-radius:50%}.ds-rail-mk.ds-t{clip-path:polygon(50% 0,100% 100%,0 100%)}.ds-vt{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.9375rem;font-weight:500;letter-spacing:.04em}"
+    },
+    {
+      "name": "Dada Tram Ticket",
+      "kind": "nav",
+      "refersTo": "dada-ticket",
+      "description": "A perforated tram ticket naming another room in its own face; tilted, inverts on hover.",
+      "html": "<a class=\"ds-ticket\" href=\"#\"><span class=\"ds-t-no\">No 1956</span><span class=\"ds-t-name\">POP ART</span><span class=\"ds-t-yr\">1956–1970</span></a>",
+      "css": ".ds-ticket{display:grid;grid-template-rows:auto 1fr auto;width:156px;height:78px;padding:7px 16px 8px 18px;background:#e3d3a8;color:#1a1814;text-decoration:none;transform:rotate(-2deg);-webkit-mask:radial-gradient(circle at 0 50%,transparent 4px,#000 4.5px) left/51% 12px repeat-y,radial-gradient(circle at 100% 50%,transparent 4px,#000 4.5px) right/51% 12px repeat-y;mask:radial-gradient(circle at 0 50%,transparent 4px,#000 4.5px) left/51% 12px repeat-y,radial-gradient(circle at 100% 50%,transparent 4px,#000 4.5px) right/51% 12px repeat-y;transition:transform 150ms steps(2,end)}.ds-ticket:hover{transform:rotate(1deg) translateY(-2px)}.ds-ticket:focus-visible{outline:3px solid #d22b1f;outline-offset:3px}.ds-t-no{font-family:'Special Elite',monospace;font-size:.75rem}.ds-t-name{font-family:'Archivo Black',sans-serif;font-size:1rem;align-self:center}.ds-t-yr{font-family:'Old Standard TT',serif;font-style:italic;font-size:.8rem}"
+    },
+    {
+      "name": "Dada Cut Heading",
+      "kind": "custom",
+      "description": "A heading cut from mixed printings; a vermilion second printing sits off-register and shifts on hover.",
+      "html": "<h2 class=\"ds-dh\"><span class=\"ds-dh-w\" data-text=\"Where\" style=\"font-family:'Abril Fatface',serif\">Where</span> <span class=\"ds-dh-w\" data-text=\"I've\" style=\"font-family:'Bodoni Moda',serif;font-style:italic\">I've</span> <span class=\"ds-dh-red\" style=\"font-family:'Archivo Black',sans-serif\">been</span></h2>",
+      "css": ".ds-dh{margin:0;padding:24px;background:#ede6d3;color:#1a1814;font-size:3.4rem;font-weight:400;line-height:.92}.ds-dh-w{position:relative;display:inline-block;isolation:isolate}.ds-dh-w::before{content:attr(data-text);position:absolute;left:0;top:0;z-index:-1;color:#d22b1f;opacity:.8;transform:translate(1.5px,1px);transition:transform 200ms steps(2,end)}.ds-dh:hover .ds-dh-w::before{transform:translate(4px,-2px)}.ds-dh-red{color:#d22b1f}"
+    },
+    {
+      "name": "Pop Price Tag",
+      "kind": "nav",
+      "refersTo": "pop-tag",
+      "description": "A channel-strip tag; its ink is its own screen and slides off the black key on hover.",
+      "html": "<nav class=\"ds-pstrip\"><a class=\"ds-ptag\" href=\"#\" style=\"--t:#ffd400\">CH 0 GALLERY</a><a class=\"ds-ptag\" href=\"#\" style=\"--t:#2eb4e6\">CH 1 BAUHAUS</a></nav>",
+      "css": ".ds-pstrip{display:flex;align-items:center;gap:8px;height:52px;padding:0 16px;background:#111}.ds-ptag{position:relative;display:inline-flex;align-items:baseline;height:34px;padding:7px 14px 0 22px;font-family:Anton,Impact,sans-serif;font-size:.98rem;line-height:1.2;letter-spacing:.04em;text-transform:uppercase;color:#111;text-decoration:none;isolation:isolate;white-space:nowrap}.ds-ptag::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--t);clip-path:polygon(12px 0,100% 0,100% 100%,12px 100%,0 50%);transform:translate(2px,-1px);transition:transform 90ms steps(2,jump-none)}.ds-ptag::after{content:'';position:absolute;left:9px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:#111}.ds-ptag:hover::before{transform:translate(5px,-4px)}.ds-ptag:active::before{transform:none}.ds-ptag:focus-visible{outline:3px solid #111;outline-offset:4px;box-shadow:0 0 0 4px #ffd400}"
+    },
+    {
+      "name": "Pop Keyed Button",
+      "kind": "button",
+      "refersTo": "pop-jingle",
+      "description": "A flat ink block with its black key off-register; hover pushes the key out, press drops onto it.",
+      "html": "<div class=\"ds-pbg\"><button class=\"ds-pbtn\">TURN IT: READ THE BACK</button></div>",
+      "css": ".ds-pbg{padding:24px;background:#f4eedc}.ds-pbtn{padding:10px 16px;border:0;background:#ff5fa2;color:#111;font-family:Anton,Impact,sans-serif;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;box-shadow:4px 3px 0 #111;transition:box-shadow 90ms steps(2,jump-none),translate 90ms steps(2,jump-none)}.ds-pbtn:hover{box-shadow:8px 6px 0 #111}.ds-pbtn:active{box-shadow:0 0 0 #111;translate:4px 3px}.ds-pbtn:focus-visible{outline:3px solid #111;outline-offset:4px}"
+    },
+    {
+      "name": "Cubism Facet Button",
+      "kind": "button",
+      "refersTo": "cubism-facet",
+      "description": "An irregular plane in stencil caps with a hatched shadow side; hover moves the light in a hard step, press sinks into the shadow.",
+      "html": "<a class=\"ds-facet\" href=\"#\"><span class=\"ds-facet-face\">BOOK A QUICK CHAT</span></a>",
+      "css": ".ds-facet{display:inline-block;margin:24px;color:#1f1d1a;text-decoration:none;--face:#c9a15f;--face-lit:#dcbb7f}.ds-facet-face{position:relative;display:inline-flex;align-items:center;padding:.95em 1.5em .9em 1.75em;background:var(--face);font-family:'Big Shoulders Stencil',sans-serif;font-weight:800;font-size:15px;letter-spacing:.16em;line-height:1;text-transform:uppercase;clip-path:polygon(3% 0,100% 7%,97% 100%,0 90%);transition:background-color 150ms steps(1,end),translate 150ms steps(1,end)}.ds-facet-face::before,.ds-facet-face::after{content:'';position:absolute;top:0;bottom:0;width:11px;background:repeating-linear-gradient(35deg,rgba(42,38,34,.82) 0 1.3px,transparent 1.3px 5.5px);transition:opacity 150ms steps(1,end)}.ds-facet-face::before{left:0}.ds-facet-face::after{right:0;opacity:0}.ds-facet:hover .ds-facet-face,.ds-facet:focus-visible .ds-facet-face{background:var(--face-lit)}.ds-facet:hover .ds-facet-face::before,.ds-facet:focus-visible .ds-facet-face::before{opacity:0}.ds-facet:hover .ds-facet-face::after,.ds-facet:focus-visible .ds-facet-face::after{opacity:1}.ds-facet:active .ds-facet-face{translate:2px 1px}.ds-facet:focus-visible{outline:3px solid #2a2622;outline-offset:4px}"
+    },
+    {
+      "name": "Cubism Passage Plane",
+      "kind": "card",
+      "description": "A plane with two hard edges whose open edges feather into the ground; hover bleeds wider and darkens the edge.",
+      "html": "<div class=\"ds-cbg\"><div class=\"ds-pass\" tabindex=\"0\">Two jobs, each seen from three sides.</div></div>",
+      "css": ".ds-cbg{padding:32px;background:#e8dcc4}.ds-pass{position:relative;isolation:isolate;max-width:320px;padding:24px;color:#1f1d1a;font-family:'Old Standard TT',serif;font-size:18px;--f:10px;--edge:#5c4128}.ds-pass::before,.ds-pass::after{content:'';position:absolute;z-index:-1;inset:0 calc(-1*var(--f)) calc(-1*var(--f)) 0;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - var(--f)*2),transparent),linear-gradient(to bottom,#000 calc(100% - var(--f)*2),transparent);mask-image:linear-gradient(to right,#000 calc(100% - var(--f)*2),transparent),linear-gradient(to bottom,#000 calc(100% - var(--f)*2),transparent);-webkit-mask-composite:source-in;mask-composite:intersect;transition:all 300ms cubic-bezier(.2,.7,.2,1)}.ds-pass::before{background:#f3eee2}.ds-pass::after{border-left:3px solid var(--edge);border-top:3px solid var(--edge)}.ds-pass:hover,.ds-pass:focus-visible{--f:26px;--edge:#2a2622;outline:none}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Gallery of Four Rooms",
+    "overview": "devayu is one gallery shell and four whole rooms. The shell is a warm night wall with four lit canvases on it and almost no chrome; its job is to stay out of the way. Each room is a complete, separate visual world built from its movement's practice (type, materials, composition, motion), and each one rebuilds the same true story from the same data in `src/data/`. Nothing is a palette swap over a shared template: rooms do not share faces, colors, buttons or easing. What they share is structure: a world mount that marks `html[data-world]` and binds Esc to the gallery, cover transitions made of the destination's material, one sound-control contract, one content model, and one craft floor.\n\nDensity runs high inside the rooms (posters, newspapers, shelves, still lifes) and low on the wall. Every room's hero is the movement's scene only, with no name; \"I'm Ayush\" begins below it. Every room ends at a way to reach him. The rejected modes, confirmed by the direction contract, are the one-page-with-a-theme-swap default and movement pastiche (primary confetti, comic POW bubbles, grunge collage, low-poly).",
+    "keyCharacteristics": [
+      "One shell, four sovereign worlds; each room's tokens are scoped to its root class and never leak.",
+      "Every composition is original SVG/CSS from the movement's grammar; no reproduced artworks, photos or brands.",
+      "Motion is the movement's own mechanism: Bauhaus cams on rails, Dada stepped chance, Pop mechanical print pulls, Cubist viewpoint shifts.",
+      "Sound is a design material: four generative themes on one 104 bpm transport, crossfading on the beat between rooms.",
+      "Phones are first-class: the wall becomes four stacked bands, every room has a dedicated phone pass."
+    ],
+    "rules": [
+      {
+        "name": "The Sealed Room Rule",
+        "body": "A room's colours are declared on its root (`.bh-room`, `.dd-root`, `.pp-room`, `.cb-room`) and on `html[data-world=…]`; nothing room-specific may live in `globals.css`. A new surface in a room uses that room's tokens only.",
+        "section": "colors"
+      },
+      {
+        "name": "The Earned Colour Rule",
+        "body": "Cubism starts analytic (ochre, umber, greys on canvas) and only reaches full Synthetic colour as the visitor scrolls (the ground is mixed by scroll progress). Saturated Cubist colour does not appear in the hero.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Vermilion Rule",
+        "body": "In Bauhaus and Dada, vermilion is the only hot colour carrying structure; Bauhaus yellow and ultramarine stay on the stage and the kit.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lowercase Rule",
+        "body": "Everything in the Bauhaus room is lowercase, set by the room root; never reintroduce capitals there.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mixed Printing Rule",
+        "body": "Dada headings are built word by word from different faces (and ransom letters on chance), never one face for a whole heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Own-Face Label Rule",
+        "body": "On the gallery wall, each canvas names itself in its room's display face; the wall's own chrome is Archivo only.",
+        "section": "typography"
+      },
+      {
+        "name": "The Material Depth Rule",
+        "body": "Depth is always a material behaviour of the room (wall light, paper lift, print register, passage), never a generic card shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Register Rule",
+        "body": "Pop's black key lands off-register by (+4px, +3px) by default; this hard offset is Pop's print grammar and belongs to Pop alone.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** scope every new rule to its room root or `html[data-world]`; CSS stays loaded after client-side moves between rooms.",
+      "**Do** build each room's micro-interactions from its movement's mechanism: rails and hard-stop cams (cubic-bezier(0.2, 0.9, 0.1, 1)) in Bauhaus, stepped chance (steps(2–3)) in Dada, mechanical steps (steps(2, jump-none), 90ms) in Pop, hard 150ms light steps and feathering passage in Cubism.",
+      "**Do** keep heroes as the scene only; start the name and introduction below.",
+      "**Do** give every room a dedicated phone pass and keep touch targets at 44px or more.",
+      "**Do** provide a reduced-motion state where every print, cut and plane is already in place.",
+      "**Do** draw icons and arrows as authored SVG in the room's own stroke (Cubism arrows: one 1.75 stroke, square caps, open head)."
+    ],
+    "donts": [
+      "**Don't** let one room's palette, face or easing appear in another room; the gallery is the only place all four meet, each inside its own canvas.",
+      "**Don't** reproduce real artworks, artists' images or real brands; compose from the movement's grammar.",
+      "**Don't** fall into movement pastiche: primary confetti, comic POW bubbles, grunge collage, low-poly.",
+      "**Don't** use Unicode glyphs or icon fonts as icons.",
+      "**Don't** add capitals to the Bauhaus room or a single uniform face to a Dada heading.",
+      "**Don't** put saturated Synthetic colour at the top of the Cubism room."
+    ]
+  }
+}

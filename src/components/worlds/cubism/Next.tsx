@@ -1,4 +1,5 @@
 import WorldLink from "@/components/gallery/WorldLink";
+import Arrow from "./Arrow";
 import { personalInfo, socialLinks } from "@/data/personal";
 import { projects } from "@/data/projects";
 import EmailScrap from "./EmailScrap";
@@ -58,7 +59,7 @@ export default function Next() {
           )}
           <a className="cb-facet cb-facet-yellow" href={currentProject.href} target="_blank" rel="noreferrer">
             <span className="cb-facet-face">
-              Follow {currentProject.name} on GitHub<span aria-hidden> ↗</span>
+              Follow {currentProject.name} on GitHub <Arrow dir="out" />
             </span>
           </a>
         </div>
@@ -81,7 +82,7 @@ export default function Next() {
             </p>
             <a className="cb-facet cb-facet-red cb-facet-big" href={calendarLink} target="_blank" rel="noreferrer">
               <span className="cb-facet-face">
-                Book a quick chat<span aria-hidden> ↗</span>
+                Book a quick chat <Arrow dir="out" />
               </span>
             </a>
           </div>

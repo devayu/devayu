@@ -46,6 +46,21 @@ export default function Skills() {
 
       <div className="cb-table">
         <svg className="cb-still" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" aria-hidden>
+          <defs>
+            {[
+              ["cobalt", "#2F4FA2", 0, 1, 0, 0],
+              ["grey", "#8E8577", 0, 0, 1, 0],
+              ["yellow", "#E5B42A", 0, 0, 0, 1],
+              ["ochre", "#C9A15F", 1, 0, 0, 0],
+              ["umber", "#5C4128", 0, 0, 0, 1],
+            ].map(([id, c, x1, y1, x2, y2]) => (
+              <linearGradient key={id} id={`cb-sk-${id}`} x1={x1} y1={y1} x2={x2} y2={y2}>
+                <stop offset="0" stopColor={c as string} />
+                <stop offset="0.55" stopColor={c as string} />
+                <stop offset="1" stopColor={c as string} stopOpacity="0" />
+              </linearGradient>
+            ))}
+          </defs>
           {/* the tabletop, from above */}
           <polygon points="50,330 950,296 992,606 14,620" fill="#B8894A" />
           <polygon points="50,330 950,296 992,606 14,620" fill="url(#cb-grain)" opacity="0.55" />
@@ -60,12 +75,14 @@ export default function Skills() {
           {/* the guitar: frontend */}
           <g className="cb-obj" data-g="front">
             <g className="cb-op" style={op(-6, 0)}>
-              <polygon points="84,170 262,140 254,476 74,506" fill="#2F4FA2" opacity="0.92" />
+              <polygon points="84,170 262,140 254,476 74,506" fill="url(#cb-sk-cobalt)" opacity="0.92" />
+              <line x1="74" y1="506" x2="254" y2="476" stroke="#2A2622" strokeWidth="3" />
               <polygon points="84,170 112,166 102,500 74,506" fill="url(#cb-hatch)" opacity="0.5" />
             </g>
             <g className="cb-op" style={op(4, -3)}>
-              <polygon points="150,262 362,240 372,540 162,560" fill="#C9A15F" />
-              <path d="M184 270 C 250 300, 196 380, 250 420 C 300 456, 230 520, 262 556" fill="none" stroke="#2A2622" strokeWidth="6" />
+              <polygon points="150,262 362,240 372,540 162,560" fill="url(#cb-sk-ochre)" />
+              <polygon points="362,240 372,540 344,543 336,243" fill="url(#cb-hatch)" opacity="0.45" />
+              <path d="M184 270 C 250 300, 196 380, 250 420 L 236 470 L 262 556" fill="none" stroke="#2A2622" strokeWidth="6" />
               <line x1="362" y1="240" x2="372" y2="540" stroke="#2A2622" strokeWidth="3" />
             </g>
             <g className="cb-op" style={op(7, 3)}>
@@ -83,11 +100,13 @@ export default function Skills() {
           {/* the bottle: backend */}
           <g className="cb-obj" data-g="back">
             <g className="cb-op" style={op(-5, 2)}>
-              <polygon points="430,112 622,96 640,520 444,540" fill="#8E8577" opacity="0.55" />
+              <polygon points="430,112 622,96 640,520 444,540" fill="url(#cb-sk-grey)" opacity="0.75" />
+              <line x1="430" y1="112" x2="622" y2="96" stroke="#2A2622" strokeWidth="3" />
               <polygon points="430,112 462,110 474,538 444,540" fill="url(#cb-hatch)" opacity="0.55" />
             </g>
             <g className="cb-op" style={op(3, -4)}>
-              <path d="M516 104 L516 222 C 486 244, 474 268, 474 300 L474 520 L592 520 L592 300 C 592 268, 580 244, 550 222 L550 104 Z" fill="#2A2622" />
+              <path d="M516 104 L516 222 L474 268 L474 520 L533 520 L533 104 Z" fill="#2A2622" />
+              <path d="M533 104 L550 104 L550 222 L592 268 L592 520 L533 520 Z" fill="#5C4128" opacity="0.85" />
             </g>
             <g className="cb-op" style={op(8, 2)}>
               <polygon points="456,330 606,320 610,424 462,432" fill="#C8372D" />
@@ -102,14 +121,15 @@ export default function Skills() {
           {/* the pipe: infrastructure */}
           <g className="cb-obj" data-g="infra">
             <g className="cb-op" style={op(6, -3)}>
-              <polygon points="690,176 906,156 926,404 712,424" fill="#E5B42A" opacity="0.92" />
+              <polygon points="690,176 906,156 926,404 712,424" fill="url(#cb-sk-yellow)" opacity="0.92" />
+              <line x1="690" y1="176" x2="906" y2="156" stroke="#2A2622" strokeWidth="3" />
               <polygon points="906,156 926,404 902,406 884,160" fill="url(#cb-hatch)" opacity="0.45" />
             </g>
             <g className="cb-op" style={op(-4, 2)}>
               <path d="M650 300 L790 372" stroke="#2A2622" strokeWidth="14" strokeLinecap="round" />
             </g>
             <g className="cb-op" style={op(3, 5)}>
-              <polygon points="770,334 872,322 880,456 780,466" fill="#5C4128" />
+              <polygon points="770,334 872,322 880,456 780,466" fill="url(#cb-sk-umber)" />
               <ellipse cx="822" cy="328" rx="52" ry="12" fill="#2A2622" />
               <line x1="770" y1="334" x2="780" y2="466" stroke="#2A2622" strokeWidth="3" />
             </g>
