@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Soundtracks for local playback only; never commit or deploy these
 /public/soundtracks-local/
+
+# Impeccable review captures (the surface brief in .impeccable/surfaces stays tracked)
+/.impeccable/review/

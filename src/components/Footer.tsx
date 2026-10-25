@@ -1,9 +1,8 @@
-import WorldSwitch from "@/components/worlds/WorldSwitch";
 import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="relative mt-24 overflow-hidden">
+    <footer className="relative overflow-hidden bg-[var(--paper)] pt-24 text-[var(--ink)]">
       {/* the mountain, small and far away now */}
       <svg
         viewBox="0 0 1200 120"
@@ -25,7 +24,9 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-between gap-4 text-sm text-ink-soft md:flex-row">
           <p>© {new Date().getFullYear()} Ayush Maurya</p>
           <div className="flex items-center gap-6">
-            <WorldSwitch className="transition-colors hover:text-crimson" />
+            <Link href="/" className="transition-colors hover:text-crimson">
+              The journey
+            </Link>
             <Link
               href="mailto:ayushmaurya36@gmail.com"
               className="transition-colors hover:text-crimson"

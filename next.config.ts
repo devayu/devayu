@@ -41,7 +41,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  /* config options here */
+  // The four worlds used to be separate pages; they're chapters of one scroll now.
+  async redirects() {
+    return ["noir", "frontier", "night-city", "yotei"].map((slug) => ({
+      source: `/${slug}`,
+      destination: `/#${slug}`,
+      permanent: false,
+    }));
+  },
 };
 
 export default nextConfig;

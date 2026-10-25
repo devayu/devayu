@@ -28,7 +28,7 @@ export default function FragmentsPage() {
   return (
     <>
     <WorldTheme slug="yotei" />
-    <main className="relative px-6 pt-5 md:px-12 md:pt-8 lg:px-24">
+    <main className="relative min-h-screen bg-[var(--paper)] px-6 pt-5 text-[var(--ink)] md:px-12 md:pt-8 lg:px-24">
       <Navbar />
       <div className="mx-auto mt-16 max-w-6xl md:mt-24">
         <h1 className="flex items-baseline gap-4 font-mincho text-5xl font-extrabold md:text-6xl">

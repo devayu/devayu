@@ -1,18 +1,13 @@
 import Highlight from "@/components/Highlight";
+import OnlyIn from "@/components/journey/OnlyIn";
 import FrontierHud from "@/components/worlds/frontier/FrontierHud";
-import { FrontierHero } from "@/components/worlds/heroes";
+import GateChapter from "@/components/journey/GateChapter";
 import Reveal from "@/components/worlds/Reveal";
-import WorldSwitch from "@/components/worlds/WorldSwitch";
-import WorldTheme from "@/components/worlds/WorldTheme";
-import { getFeaturedProjects, personalInfo, socialLinks, workExperience } from "@/data";
+import { getFeaturedProjects, workExperience } from "@/data";
 import { cn } from "@/lib/utils";
-import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Frontier",
-  description: "Ayush Maurya's portfolio out on the frontier: a wanted poster, a journal and a mail-order catalogue.",
-};
+// Chapter II, Frontier: where I've been. Work history and everything built.
 
 const Tumbleweed = () => (
   <svg viewBox="0 0 60 60" className="h-full w-full" aria-hidden>
@@ -105,42 +100,38 @@ const SectionTitle = ({ children, className }: { children: React.ReactNode; clas
   <h2 className={cn("font-rye text-[clamp(2.6rem,8vw,6.5rem)] leading-[0.95]", className)}>{children}</h2>
 );
 
-export default function FrontierPage() {
+export default function FrontierChapter() {
   const projects = getFeaturedProjects();
 
   return (
-    <div className="frontier-world min-h-screen bg-[#1c0d07] font-fell text-[#2b1a10]">
-      <WorldTheme slug="frontier" />
-      <h1 className="sr-only">Ayush Maurya, full stack developer</h1>
-      <FrontierHud />
+    <section id="frontier" data-reality="frontier" className="frontier-world relative font-fell text-[#2b1a10]">
+      <OnlyIn world="frontier">
+        <FrontierHud />
+      </OnlyIn>
 
-      {/* Hero: the open range, with a chapter card */}
-      <section className="relative h-[100svh] min-h-[520px] overflow-hidden">
-        <div className="fr-heat absolute inset-0">
-          <FrontierHero />
-        </div>
-        <div className="fr-tumbleweed absolute bottom-[8%] left-0 size-14 md:size-20">
-          <Tumbleweed />
-        </div>
-        <div aria-hidden className="fr-letterbox fr-letterbox-top" />
-        <div aria-hidden className="fr-letterbox fr-letterbox-bottom" />
-        <header className="relative z-10 flex items-center justify-between px-5 pt-[calc(9vh+12px)] font-rye text-lg text-[#f6d189] md:px-10">
-          <span>devayu</span>
-          <WorldSwitch className="font-fell text-base hover:text-white" />
-        </header>
-        <div className="fr-chapter absolute inset-x-0 top-[22%] z-10 text-center text-[#fbe3a6]">
-          <p className="font-rye text-[clamp(3rem,10vw,8rem)] leading-none drop-shadow-[0_4px_0_rgb(42_19_12/0.6)]">
-            Howdy, Stranger
+      {/* The seam: the city transforms into the desert while this window is pinned */}
+      <div data-gate data-window data-from="noir" data-to="frontier" className="relative h-[220svh]">
+        <div className="sticky top-0 h-[100svh] min-h-[520px] overflow-hidden">
+          <GateChapter world="frontier" className="font-rye text-[#fbe3a6]" />
+          <div aria-hidden className="gate-in fr-letterbox-static fr-letterbox-top" />
+          <div aria-hidden className="gate-in fr-letterbox-static fr-letterbox-bottom" />
+          <div className="gate-in gate-rise absolute inset-x-0 top-[24%] z-10 pl-10 text-center text-[#fbe3a6] md:pl-0">
+            <p className="font-rye text-[clamp(3rem,10vw,8rem)] leading-none drop-shadow-[0_4px_0_rgb(42_19_12/0.6)]">
+              Howdy, Stranger
+            </p>
+            <p className="mt-3 font-fell text-xl italic md:text-2xl">Here&apos;s where I&apos;ve been.</p>
+          </div>
+          <div className="gate-in fr-tumbleweed absolute bottom-[8%] left-0 size-14 md:size-20">
+            <Tumbleweed />
+          </div>
+          <p className="gate-in absolute inset-x-0 bottom-[calc(9vh+14px)] z-10 text-center font-fell italic text-[#f6d189]/80">
+            Ride on down. Press E if you&apos;re feeling quick on the draw.
           </p>
-          <p className="mt-3 font-fell text-xl italic tracking-[0.3em] md:text-2xl">Chapter I</p>
         </div>
-        <p className="absolute inset-x-0 bottom-[calc(9vh+14px)] z-10 text-center font-fell italic text-[#f6d189]/80">
-          Ride on down. Press E if you&apos;re feeling quick on the draw.
-        </p>
-      </section>
+      </div>
 
       {/* The wanted poster and a journal entry */}
-      <section className="fr-wood fr-torn-top relative px-5 py-20 md:py-28">
+      <section className="fr-wood fr-torn-top relative pl-12 pr-5 py-20 md:pl-20 md:pr-10 md:py-28">
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[minmax(0,420px)_1fr]">
           <Reveal className="fr-pin relative mx-auto w-full max-w-[420px]" style={{ ["--tilt" as string]: "-2deg" }}>
             <div className="fr-paper fr-torn px-7 pb-8 pt-9 text-center shadow-[0_20px_40px_rgb(0_0_0/0.5)]">
@@ -172,22 +163,19 @@ export default function FrontierPage() {
               <div className="space-y-4 pl-6 font-caveat text-2xl leading-snug md:text-[1.7rem]">
                 <p className="text-4xl font-bold">Well, howdy.</p>
                 <p>
-                  I see you read the poster. Don&apos;t believe everything they print
-                  about me. I&apos;m Ayush, and I build software all the way through,
-                  from the database out to whatever you click on.
+                  So you made it out of the city. Pull up a chair and I&apos;ll tell
+                  you where I&apos;ve been riding.
                 </p>
                 <p>
-                  These days I&apos;m riding with{" "}
-                  <Link href={personalInfo.currentProject.href} target="_blank" rel="noopener noreferrer" className="text-[#8b1e1e] underline decoration-wavy underline-offset-4">
-                    {personalInfo.currentProject.name}
-                  </Link>
-                  , a tool that finds accessibility problems on websites so more
-                  folks can use them.
+                  Since October 2022 I&apos;ve been a senior software engineer at
+                  agilon Health, moving an old Groovy monolith onto Spring Boot and
+                  building the React tools people there use every day.
                 </p>
                 <p>
-                  When I&apos;m off the clock it&apos;s side projects, books, music and a
-                  whole lot of games. Pull up a chair and look around.
+                  In 2024 I took a freelance job for A1 Associates and got them into
+                  the top five Google results for their own name.
                 </p>
+                <p>Everything else I&apos;ve built is pinned up in the catalogue below. Have a look.</p>
                 <p className="text-right text-xl">— A.</p>
               </div>
             </div>
@@ -196,7 +184,7 @@ export default function FrontierPage() {
       </section>
 
       {/* The catalogue: projects */}
-      <section className="fr-paper fr-torn-top px-5 py-20 md:py-28">
+      <section className="fr-paper fr-torn-top pl-12 pr-5 py-20 md:pl-20 md:pr-10 md:py-28">
         <div className="mx-auto max-w-6xl">
           <div className="border-y-4 border-double border-[#2b1a10] py-6 text-center">
             <SectionTitle>The Maurya &amp; Co. Catalogue</SectionTitle>
@@ -246,10 +234,9 @@ export default function FrontierPage() {
       </section>
 
       {/* The trail: work, as stations on a rail line */}
-      <section className="fr-torn-top bg-[#2b1a10] px-5 py-20 text-[#e8d7b2] md:py-28">
+      <section className="fr-torn-top bg-[#2b1a10] py-20 pl-12 pr-5 text-[#e8d7b2] md:py-28 md:pl-20 md:pr-10">
         <div className="mx-auto max-w-6xl">
           <SectionTitle className="text-[#f6d189]">Stops along the trail</SectionTitle>
-          <p className="mt-1 font-fell text-xl italic text-[#f6d189]/80">Chapter II</p>
           <p className="mt-2 max-w-xl text-lg italic text-[#e8d7b2]/80">Where I&apos;ve hung my hat, most recent first.</p>
           <div aria-hidden className="relative mt-10 h-6">
             <div className="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 bg-[repeating-linear-gradient(90deg,#8a6a3c_0_6px,transparent_6px_18px)]" />
@@ -277,42 +264,12 @@ export default function FrontierPage() {
               </Reveal>
             ))}
           </ol>
+          <p className="mt-24 text-center font-fell text-xl italic text-[#f6d189]/75">
+            That&apos;s the road behind me. The road ahead is stranger. Keep riding.
+          </p>
         </div>
       </section>
 
-      {/* Telegraph office */}
-      <section className="fr-wood fr-torn-top px-5 py-20 md:py-28">
-        <Reveal className="fr-pin fr-paper mx-auto max-w-2xl p-7 shadow-[0_20px_40px_rgb(0_0_0/0.5)] md:p-10" style={{ ["--tilt" as string]: "-0.8deg" }}>
-          <div className="flex items-baseline justify-between border-b-4 border-double border-[#2b1a10] pb-3">
-            <p className="font-rye text-2xl md:text-3xl">Telegram</p>
-            <p aria-hidden className="font-rye text-lg tracking-[0.3em] text-[#8b1e1e]">·— ·· —·</p>
-          </div>
-          <div className="mt-5 space-y-3 font-fell text-xl uppercase leading-relaxed tracking-wide">
-            <p>To: you. From: Ayush.</p>
-            <p>
-              If you&apos;ve got a job, a project or an idea worth riding out for
-              stop. I&apos;d like to hear it stop. Send word and I&apos;ll answer
-              quick stop.
-            </p>
-          </div>
-          <div className="mt-7 flex flex-wrap gap-3 font-rye text-lg">
-            <Link href={`mailto:${personalInfo.email}`} className="bg-[#2b1a10] px-5 py-3 text-[#e8d7b2] transition-transform hover:-translate-y-0.5">
-              Send a telegram
-            </Link>
-            <Link href={personalInfo.calendarLink} target="_blank" rel="noopener noreferrer" className="border-2 border-[#2b1a10] px-5 py-3 transition-colors hover:bg-[#2b1a10] hover:text-[#e8d7b2]">
-              Meet me at the saloon
-            </Link>
-          </div>
-        </Reveal>
-        <div className="mt-12 flex justify-center gap-8 font-rye text-[#f6d189]">
-          {socialLinks.map((s) => (
-            <Link key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-              {s.name}
-            </Link>
-          ))}
-        </div>
-        <p className="mt-8 pb-12 text-center font-fell italic text-[#e8d7b2]/60">Ride safe, partner.</p>
-      </section>
-    </div>
+    </section>
   );
 }

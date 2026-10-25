@@ -4,10 +4,6 @@ import { siteConfig } from '@/lib/seo';
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
-    '/noir',
-    '/frontier',
-    '/night-city',
-    '/yotei',
     '/%E2%88%85',
   ];
 

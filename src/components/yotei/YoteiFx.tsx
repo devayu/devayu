@@ -11,7 +11,7 @@ export function FollowWind() {
     audio.sfx("slash");
     window.dispatchEvent(new Event("yotei:gust"));
     // let the gust tear through the field before carrying you down
-    window.setTimeout(() => document.getElementById("scroll")?.scrollIntoView({ behavior: "smooth" }), 900);
+    window.setTimeout(() => document.getElementById("yotei-next")?.scrollIntoView({ behavior: "smooth" }), 900);
   };
   return (
     <>

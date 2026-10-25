@@ -158,11 +158,12 @@
   * {
     @apply border-border outline-ring/50;
   }
+  /* The journey is mostly night; light sections paint their own ground. */
   html {
-    background: var(--paper);
+    background: #000;
   }
   body {
-    background: var(--paper);
+    background: #000;
     color: var(--ink);
     font-family: var(--font-maru), system-ui, sans-serif;
   }
@@ -1775,4 +1776,149 @@ html.scanning [data-scan]::after {
   opacity: 0.09;
   pointer-events: none;
   user-select: none;
+}
+
+/* ——— The journey: chapter rail ——— */
+.chapter-rail {
+  --rail-ink: #ece8df;
+}
+[data-world="noir"] .chapter-rail {
+  --rail-ink: #e9dfa5;
+}
+[data-world="frontier"] .chapter-rail {
+  --rail-ink: #f6d189;
+}
+[data-world="night-city"] .chapter-rail {
+  --rail-ink: #fcee0a;
+}
+[data-world="yotei"] .chapter-rail {
+  --rail-ink: var(--ink);
+}
+.rail-item {
+  color: var(--rail-ink);
+}
+.rail-mark {
+  width: 14px;
+  /* inverts against whatever world is behind it, dark section or parchment */
+  background: #fff;
+  mix-blend-mode: difference;
+  opacity: 0.45;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s;
+}
+/* collapsed to its marks; the names unfold when the rail is hovered or focused */
+.chapter-rail ol {
+  padding: 10px 12px 10px 6px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+.chapter-rail:hover ol,
+.chapter-rail:focus-within ol {
+  background: rgb(0 0 0 / 0.72);
+  backdrop-filter: blur(6px);
+}
+.rail-text {
+  display: none;
+}
+.chapter-rail:hover .rail-text,
+.chapter-rail:focus-within .rail-text {
+  display: flex;
+}
+.rail-name,
+.rail-label {
+  opacity: 0.55;
+  transition: opacity 0.3s;
+}
+.rail-label {
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s, max-height 0.4s;
+}
+.rail-item:hover .rail-name,
+.rail-item:focus-visible .rail-name {
+  opacity: 0.85;
+}
+.rail-item.is-active .rail-mark {
+  width: 34px;
+  opacity: 1;
+}
+.rail-item.is-active .rail-name {
+  opacity: 1;
+}
+.rail-item.is-active .rail-label {
+  opacity: 0.8;
+  max-height: 1.5em;
+}
+[data-world="yotei"] .chapter-rail:hover .rail-item,
+[data-world="yotei"] .chapter-rail:focus-within .rail-item {
+  color: #f3ece0;
+}
+/* the loadout's honeycomb: cells are buttons inside display:contents items */
+.honeycomb > li:nth-child(even) .hex {
+  transform: translateY(50%);
+}
+.hex.is-selected {
+  background: var(--nc-gold);
+  color: #000;
+}
+.hex.is-selected span {
+  color: #000;
+}
+
+/* ——— The journey: seams that transform one reality into the next ———
+   Each gate sets --p (0 to 1) as it scrolls; its overlays key off it. */
+.gate-in {
+  opacity: clamp(0, calc((var(--p, 0) - 0.62) * 3.2), 1);
+  pointer-events: none;
+}
+.gate-in > *,
+.gate-in a,
+.gate-in button {
+  pointer-events: auto;
+}
+.gate-rise {
+  transform: translateY(calc((1 - clamp(0, calc((var(--p, 0) - 0.6) * 2.6), 1)) * 50px));
+}
+.gate-rise-far {
+  translate: 0 calc((1 - clamp(0, calc((var(--p, 0) - 0.6) * 2.6), 1)) * 120px);
+}
+.gate-slab {
+  clip-path: polygon(0 0, calc(clamp(0, calc((var(--p, 0) - 0.62) * 3), 1) * 100%) 0, calc(clamp(0, calc((var(--p, 0) - 0.62) * 3), 1) * 68%) 100%, 0 100%) !important;
+  animation: none !important;
+}
+.gate-mid {
+  opacity: clamp(0, min(calc((var(--p, 0) - 0.18) * 4), calc((0.62 - var(--p, 0)) * 4)), 1);
+}
+.fr-letterbox-static {
+  position: absolute;
+  inset-inline: 0;
+  z-index: 5;
+  height: 9vh;
+  background: #000;
+}
+/* Night City keeps its tokens on the section but its ground on the content,
+   so the shared world shows through the seam. */
+.nc-clear {
+  background: none !important;
+}
+.nc-ground {
+  background:
+    radial-gradient(ellipse at 80% 0%, rgb(255 0 60 / 0.12), transparent 50%),
+    radial-gradient(ellipse at 0% 60%, rgb(0 240 255 / 0.08), transparent 45%),
+    #030305;
+}
+/* the world itself joins in with each reality's modes */
+html.bullet-time [data-reality-canvas] {
+  filter: grayscale(1) contrast(1.15) sepia(0.15) hue-rotate(180deg);
+}
+html.dead-eye [data-reality-canvas] {
+  filter: sepia(0.9) saturate(1.8) hue-rotate(-12deg) contrast(1.15) brightness(0.92);
+}
+html.kurosawa [data-reality-canvas] {
+  filter: grayscale(1) contrast(1.25) brightness(0.95);
+}
+[data-reality-canvas] {
+  transition: filter 0.6s;
+}
+.nc-fig.gate-rise-far {
+  animation: none;
 }

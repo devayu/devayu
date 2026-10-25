@@ -126,9 +126,14 @@ const ensurePlayer = () => {
 
 /* ——— Local files (only present on Ayush's machine; gitignored) ——— */
 
-let localEl: HTMLAudioElement | null = null;
-let localFade = 0;
+// One element per track, so a world change can crossfade: the next song
+// starts at the same second the last one had reached and fades in over it.
+const localEls = new Map<string, HTMLAudioElement>();
+const localFades = new Map<HTMLAudioElement, number>();
+let localCurrent: HTMLAudioElement | null = null;
+let localRate = 1;
 const localExists = new Map<string, Promise<boolean>>();
+const CROSSFADE = 2200;
 
 const hasLocal = (url: string) => {
   if (!localExists.has(url)) {
@@ -142,44 +147,68 @@ const hasLocal = (url: string) => {
   return localExists.get(url)!;
 };
 
-const fadeLocal = (target: number, ms: number, done?: () => void) => {
-  window.clearInterval(localFade);
-  const el = localEl;
-  if (!el) return;
+const fadeLocal = (el: HTMLAudioElement, target: number, ms: number, done?: () => void) => {
+  window.clearInterval(localFades.get(el));
   const steps = Math.max(1, Math.round(ms / 50));
   const delta = (target - el.volume) / steps;
   let n = 0;
-  localFade = window.setInterval(() => {
+  const id = window.setInterval(() => {
     n++;
     el.volume = n >= steps ? target : Math.min(1, Math.max(0, el.volume + delta));
     if (n >= steps) {
-      window.clearInterval(localFade);
+      window.clearInterval(id);
       done?.();
     }
   }, 50);
+  localFades.set(el, id);
 };
 
 const stopLocal = (ms = 500) => {
-  if (localEl && !localEl.paused) fadeLocal(0, ms, () => localEl?.pause());
+  const el = localCurrent;
+  localCurrent = null;
+  if (el && !el.paused) fadeLocal(el, 0, ms, () => el.pause());
+};
+
+const localEl = (url: string) => {
+  let el = localEls.get(url);
+  if (!el) {
+    el = new Audio(url);
+    el.loop = true;
+    el.preload = "auto";
+    el.volume = 0;
+    localEls.set(url, el);
+  }
+  el.preservesPitch = false;
+  el.playbackRate = localRate;
+  return el;
 };
 
 const playLocal = (url: string, startAt: number, fromPreview: boolean) => {
-  if (!localEl) {
-    localEl = new Audio();
-    localEl.loop = true;
-    localEl.preload = "auto";
+  const el = localEl(url);
+  const prev = localCurrent;
+  const target = fromPreview ? 0.7 : 0.85;
+  localCurrent = el;
+
+  if (prev === el) {
+    // Same song: a hovered preview carries straight on into the world.
+    el.play().catch(() => {});
+    fadeLocal(el, target, 900);
+    return;
   }
-  const el = localEl;
-  const sameTrack = el.src.endsWith(url);
-  if (!sameTrack) {
-    el.volume = 0;
-    el.src = url;
-    if (startAt > 0) el.addEventListener("loadedmetadata", () => (el.currentTime = startAt), { once: true });
+
+  // A different song picks up at the second the last one had reached, so the
+  // change sounds like one piece of music turning into another. A song that is
+  // still fading out (you scrolled back) just swells back in where it is.
+  const carry = prev && !prev.paused ? prev.currentTime : null;
+  const at = carry ?? (el.currentTime > 0 ? null : startAt);
+  if (at !== null && el.paused) {
+    const seek = () => (el.currentTime = el.duration ? at % el.duration : at);
+    if (el.readyState >= 1) seek();
+    else el.addEventListener("loadedmetadata", seek, { once: true });
   }
-  // Continuing the same track keeps its position, so a hovered preview
-  // carries straight on into the world.
   el.play().catch(() => {});
-  fadeLocal(fromPreview ? 0.7 : 0.85, 900);
+  fadeLocal(el, target, prev ? CROSSFADE : 900);
+  if (prev) fadeLocal(prev, 0, CROSSFADE, () => prev.pause());
 };
 
 const play = async (slug: WorldSlug, fromPreview: boolean) => {
@@ -214,7 +243,9 @@ const play = async (slug: WorldSlug, fromPreview: boolean) => {
   } else {
     volume = 0;
     p.setVolume(0);
-    p.loadVideoById({ videoId: track.youtubeId, startSeconds: fromPreview ? track.previewAt : 0 });
+    // Carry the timestamp over from the song that was playing.
+    const carry = p.getPlayerState() === YT_PLAYING ? p.getCurrentTime() : 0;
+    p.loadVideoById({ videoId: track.youtubeId, startSeconds: fromPreview ? track.previewAt : carry });
   }
   fadeTo(fromPreview ? 70 : 85, 900);
 };
@@ -289,10 +320,11 @@ export const audio = {
 
   /** Slow the soundtrack down (bullet time, Dead Eye). Pitch drops with it. */
   setRate(rate: number) {
-    if (localEl) {
-      localEl.preservesPitch = false;
-      localEl.playbackRate = Math.max(0.25, rate);
-    }
+    localRate = Math.max(0.25, rate);
+    localEls.forEach((el) => {
+      el.preservesPitch = false;
+      el.playbackRate = localRate;
+    });
     if (player && state.source === "youtube") {
       // YouTube only accepts a fixed set of speeds.
       const allowed = [0.25, 0.5, 0.75, 1];
